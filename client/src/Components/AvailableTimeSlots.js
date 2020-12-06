@@ -35,7 +35,7 @@ export default function SimpleSelect(props) {
       pickedtime: availabletimeslot.time
   }
     const reservation = () =>{
-        const reserve = axios.post("http://localhost:4000/appointments/reservation", {
+        const reserve = axios.post("/appointments/reservation", {
             obj,
 
           }).then(props.fn());

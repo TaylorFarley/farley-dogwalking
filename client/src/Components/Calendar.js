@@ -20,7 +20,7 @@ const Calendar = () => {
   useEffect(() => {
     let thedate = moment(selectedDate).format("YYYY-MM-DD");
     const makeApt = axios
-      .post("http://localhost:4000/appointments/checkavailabletimes", {
+      .post("/appointments/checkavailabletimes", {
         thedate,
       })
       .then((res) => {
