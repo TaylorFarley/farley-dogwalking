@@ -28,17 +28,8 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/appointments', appointmentsRouter);
-if(process.env.PORT){
-  app.use(express.static(path.join(__dirname, "client/build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/client/build/index.html"));
-  });
-  
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+
 
 //DB SETUP
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:true})
@@ -46,18 +37,32 @@ mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true, useF
 var db = mongoose.connection;
 //DB SETUP
 
+if(process.env.PORT){
+  app.use(express.static(path.join(__dirname, "client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  });
+  
+  
+  app.use((req, res, next) => {
+    next(createError(404));
+  });
+  // ssl fix 
+  app.get('*',function(req,res,next){
+    if(req.headers['x-forwarded-proto']!='https')
+      res.redirect('https://stouffvillecommunitytracer.ca'+req.url)
+    else
+      next() /* Continue to other routes if we're not redirecting */
+  })
+  // end of ssl fix
+  app.use(function (err, req, res, next) {
+    console.error(err.message);
+    if (!err.statusCode) err.statusCode = 500;
+    res.status(err.statusCode).send(err.message);
+  });
+  }
 
 
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
 module.exports = app;
