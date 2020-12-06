@@ -27,13 +27,22 @@ app.use('/appointments', appointmentsRouter);
 
 
 
-//DB SETUP
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:true})
+
+var mongoDB = process.env;
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(()=>{console.log('CONNECTED!!!!!!!!!!!!:)')});
+
+//Get the default connection
 var db = mongoose.connection;
-//DB SETUP
-app.use(express.static(path.join(__dirname, "client/build")));
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
+    app.use(express.static(path.join(__dirname, "client/build")));
    
+
+    
 
     
 
