@@ -38,7 +38,7 @@ const BookAppointment = () => {
                            {/* here */}
                             <div class="et_pb_text_inner">
                               <h2>
-                              Please select an available date for booking.
+                              Please select an available date for booking!
                               </h2>
                               <p>
                                <Calendar />
