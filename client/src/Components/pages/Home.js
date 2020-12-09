@@ -283,17 +283,17 @@ const Home = () => {
 <div className="container clearfix">
 <ul className="et-social-icons">
 <li className="et-social-icon et-social-facebook">
-<a href="#" className="icon">
+<a href="/#" className="icon">
 <span>Facebook</span>
 </a>
 </li>
 <li className="et-social-icon et-social-twitter">
-<a href="#" className="icon">
+<a href="/#" className="icon">
 <span>Twitter</span>
 </a>
 </li>
 <li className="et-social-icon et-social-google-plus">
-<a href="#" className="icon">
+<a href="/#" className="icon">
 <span>Google</span>
 </a>
 </li>

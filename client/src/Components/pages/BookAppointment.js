@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-
+import GoogleButton from 'react-google-button'
 import Calendar from "../Calendar"
 import axios from 'axios'
+import { Link, useHistory } from 'react-router-dom';
 const BookAppointment = () => {
-
+  let history = useHistory();
   useEffect(() => {
    
     const getgoogleinfo = axios
@@ -50,6 +51,7 @@ const BookAppointment = () => {
                             <div class="et_pb_text_inner">
                               <h2>
                               Please select an available date for booking!
+                              <GoogleButton onClick={() => {  }} />
                               <a href="http://localhost:4000/auth/google">Login with Google+</a>
                               </h2>
                               <p>
