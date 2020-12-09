@@ -1,7 +1,18 @@
-import React from "react";
-import $ from "jquery";
+import React, { useEffect } from "react";
+
 import Calendar from "../Calendar"
+import axios from 'axios'
 const BookAppointment = () => {
+
+  useEffect(() => {
+   
+    const getgoogleinfo = axios
+      .post("/auth/getgoogleinfo")
+      .then((res) => {
+        console.log(res)
+      });
+  }, []);
+
   return (
     <React.Fragment>
       <div id="et-main-area">
@@ -39,6 +50,7 @@ const BookAppointment = () => {
                             <div class="et_pb_text_inner">
                               <h2>
                               Please select an available date for booking!
+                              <a href="http://localhost:4000/auth/google">Login with Google+</a>
                               </h2>
                               <p>
                                <Calendar />
