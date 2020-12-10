@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import GoogleButton from 'react-google-button'
 import Calendar from "../Calendar"
 import axios from 'axios'
 
 const BookAppointment = () => {
+  const [login,setlogin] = useState({})
+
   useEffect(() => {
-   
-    const getgoogleinfo = axios
+       const getgoogleinfo = axios
       .post("/auth/getgoogleinfo")
       .then((res) => {
-        console.log(res)
+        console.log(res.data)
+        setlogin(res.data)
+        
       });
   }, []);
 
@@ -48,19 +51,34 @@ const BookAppointment = () => {
                           <div class="et_pb_module et_pb_text et_pb_text_1  et_pb_text_align_center et_pb_bg_layout_light">
                            {/* here */}
                             <div class="et_pb_text_inner">
-                              <h2>
-                              Please select an available date for booking!
+                             
+                        {login?(
+                          <>
+                        <h1>Welcome! {login.username}</h1>
+                        <h2>
+                        Please select an available date for booking!
+                        </h2>
+                        <p>
+                        <Calendar />
+                        <h1 onClick={()=>{
+                            console.log('clicked')
+                            const logoutstat = axios
+                            .post("/auth/logout")
+                            .then((res) => {
+                              setlogin(null) 
+                              console.log(login)                           
+                            });
+                          }}>log out</h1>
+                       </p>
+                        </>
+                        ):(  <a href='http://localhost:4000/auth/google'>
+                        <GoogleButton />
+                       </a>)}
+                            
 
-                              <a href='http://localhost:4000/auth/google'>
-                              <GoogleButton />
-                             </a>
-
+                            
+                            
                               
-                              <a href="http://localhost:4000/auth/google">Login with Google+</a>
-                              </h2>
-                              <p>
-                               <Calendar />
-                              </p>
                             </div>
                             {/* end here */}
                           </div>

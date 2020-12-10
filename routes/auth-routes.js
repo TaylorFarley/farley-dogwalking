@@ -16,6 +16,14 @@ router.get(
     scope: ["profile", "email"],
   })
 );
+router.post("/logout", (req,res) => {
+  req.logout()
+  res.send('logged out')
+ 
+  // console.log(`the string is ${string}`)
+}
+)
+
 
 router.post("/getgoogleinfo", (req,res) => {
     res.send(string)
