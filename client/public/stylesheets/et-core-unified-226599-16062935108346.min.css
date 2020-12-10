@@ -1349,7 +1349,7 @@ body.et_pb_pagebuilder_layout.single.et_full_width_page #page-container #et-boc 
 }
 
 .et_pb_column_0 {
-	padding-top: 5vw
+	padding-top: 0;
 }
 
 .et_pb_column_3 {

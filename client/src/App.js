@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import $ from "jquery";
 import BookAppointment from "./Components/pages/BookAppointment";
 import Home from "./Components/pages/Home";
-
+import Nav from './Components/Nav'
 function App() {
   return (
+  
     <Router>
+   <Nav />
       <Switch>
         <Route exact path="/">
           <Home />
