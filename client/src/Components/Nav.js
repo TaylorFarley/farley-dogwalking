@@ -1,4 +1,5 @@
 import React from "react";
+import {Link } from 'react-router-dom';
 import $ from "jquery";
 const Nav = () => {
   return (
@@ -21,9 +22,8 @@ const Nav = () => {
                 id="menu-item-226590"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226590"
               >
-                <a href="https://www.elegantthemes.com/layouts/services/dog-walker-home-page/live-demo">
-                  Home
-                </a>
+                  <Link to="/">Home</Link>
+                
               </li>
               <li
                 id="menu-item-226592"
@@ -37,9 +37,9 @@ const Nav = () => {
                 id="menu-item-226594"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226594"
               >
-                <a href="https://www.elegantthemes.com/layouts/services/dog-walker-blog-page/live-demo">
-                  Online Booking
-                </a>
+              
+                <Link to="/BookAppointment">Online Booking</Link> 
+                
               </li>
            
               <li
