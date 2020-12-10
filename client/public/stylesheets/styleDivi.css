@@ -11474,7 +11474,7 @@ a.et_pb_more_button:after {
 }
 
 .mobile_menu_bar:before {
-	content: "\61";
+	content: "☰";
 	font-size: 32px;
 	position: relative;
 	left: 0;
