@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link } from 'react-router-dom';
 import $ from "jquery";
+import axios from 'axios'
+import UserContext from "../context/UserContext";
 const Nav = () => {
+  const { userData, setUserData } = useContext(UserContext);
+  console.log(userData)
   return (
     <header id="main-header" data-height-onload="66">
       <div class="container clearfix et_menu_container">
@@ -50,6 +54,21 @@ const Nav = () => {
                   Contact
                 </a>
               </li>
+
+              {userData?(<li
+                id="menu-item-226598"
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226598"
+                style={{cursor:"pointer"}}
+                onClick={()=>{
+                  console.log('clicked')
+                  const logoutstat = axios
+                  .post("/auth/logout")
+                  .then((res) => {
+                    setUserData(null) 
+                                         
+                  });
+                }}
+              >log out</li>):null}
              
             </ul>{" "}
           </nav>
