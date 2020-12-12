@@ -3,21 +3,29 @@ import GoogleButton from "react-google-button";
 import Calendar from "../Calendar";
 import axios from "axios";
 import UserContext from "../../context/UserContext";
-
-import Avatar from "@material-ui/core/Avatar";
+import $ from "jquery";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-
+import TransitionsModal from "../Modal";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+
 const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
@@ -49,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const BookAppointment = () => {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
   const { userData, setUserData } = useContext(UserContext);
   useEffect(() => {
     const getgoogleinfo = axios.post("/auth/getgoogleinfo").then((res) => {
@@ -57,9 +66,85 @@ const BookAppointment = () => {
       setUserData(res.data);
     });
   }, []);
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <React.Fragment>
+      <div>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <h1>Guest</h1>
+              <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <div className={classes.paper}>
+                  <form className={classes.form} noValidate>
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                      autoFocus
+                    />
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="address"
+                      label="Address"
+                      type="address"
+                      id="address"
+                      autoComplete="address"
+                    />
+                    <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="phone"
+                      label="Phone Number"
+                      type="phone"
+                      id="phone"
+                      autoComplete="phone"
+                    />
+
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      className={classes.submit}
+                    >
+                      Sign In
+                    </Button>
+                  </form>
+                </div>
+              </Container>
+            </div>
+          </Fade>
+        </Modal>
+      </div>
       <div id="et-main-area">
         <div id="main-content">
           <article
@@ -91,7 +176,7 @@ const BookAppointment = () => {
                           <div class="et_pb_module et_pb_text et_pb_text_1  et_pb_text_align_center et_pb_bg_layout_light">
                             {/* here */}
                             <div class="et_pb_text_inner">
-                              {userData ? (
+                              {userData.email ? (
                                 <>
                                   <h1>Welcome! {userData.username}</h1>
                                   <h2>
@@ -108,15 +193,15 @@ const BookAppointment = () => {
                                     <CssBaseline />
 
                                     <div className={classes.paper}>
-                                    <Button
-                                         
-                                          fullWidth
-                                          variant="contained"
-                                          color="primary"
-                                          className={classes.submit}
-                                        >
-                                          Continue As Guest
-                                        </Button>
+                                      <Button
+                                        fullWidth
+                                        variant="contained"
+                                        color="primary"
+                                        className={classes.submit}
+                                        onClick={handleOpen}
+                                      >
+                                        Continue As Guest
+                                      </Button>
                                       <form className={classes.form} noValidate>
                                         <div class="separator">Or</div>
 
@@ -137,7 +222,6 @@ const BookAppointment = () => {
                                           label="Email Address"
                                           name="email"
                                           autoComplete="email"
-                                          autoFocus
                                         />
                                         <TextField
                                           variant="outlined"
@@ -174,9 +258,11 @@ const BookAppointment = () => {
                                         </Grid>
                                         <div class="separator">Or</div>
                                         <div>
-                                        <a href="http://localhost:4000/auth/google">
-                                          <GoogleButton style={{width: "100%"}} />
-                                        </a>
+                                          <a href="http://localhost:4000/auth/google">
+                                            <GoogleButton
+                                              style={{ width: "100%" }}
+                                            />
+                                          </a>
                                         </div>
                                       </form>
                                     </div>

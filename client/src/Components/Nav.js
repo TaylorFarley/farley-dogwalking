@@ -55,7 +55,7 @@ const Nav = () => {
                 </a>
               </li>
 
-              {userData?(<li
+              {userData.email?(<li
                 id="menu-item-226598"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226598"
                 style={{cursor:"pointer"}}
@@ -64,7 +64,11 @@ const Nav = () => {
                   const logoutstat = axios
                   .post("/auth/logout")
                   .then((res) => {
-                    setUserData(null) 
+                    setUserData({email: null,
+                      googleId: null,
+                      username: null,      
+                      address:null,
+                      phone: null}) 
                                          
                   });
                 }}

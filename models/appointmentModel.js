@@ -5,7 +5,22 @@ const AppointmentSchema = new Schema({
   thedate: {
     type: String,
     required: true
-  },
+  }, 
+  email: {
+    type: String  
+  },   
+  googleId: {
+    type: String  
+  }, 
+  username: {
+    type: String  
+  },   
+  address: {
+    type: String  
+  },  
+  phone: {
+    type: String  
+  },  
   uid: {
     type: String,
     required: true
@@ -17,5 +32,6 @@ const AppointmentSchema = new Schema({
     type: Date,
     default: Date.now
   }
+
 });
 module.exports = Appointment = mongoose.model("Appointments", AppointmentSchema);

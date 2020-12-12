@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -7,8 +7,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import moment from "moment";
-import axios from "axios"
-
+import axios from "axios";
+import $ from "jquery";
+import UserContext from "../context/UserContext";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SimpleSelect(props) {
-    
+  const { userData, setUserData } = useContext(UserContext);
 
   const classes = useStyles();
   const [availabletimeslot, setavailabletimeslot] = React.useState('');
@@ -32,7 +33,12 @@ export default function SimpleSelect(props) {
 
   let obj = {
       thedate,
-      pickedtime: availabletimeslot.time
+      pickedtime: availabletimeslot.time,
+      email: userData.email,
+      googleId: userData.googleId,
+      username: userData.username,      
+      address: userData.address,
+      phone: userData.phone,
   }
     const reservation = () =>{
         const reserve = axios.post("/appointments/reservation", {

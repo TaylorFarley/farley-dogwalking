@@ -61,15 +61,19 @@ router.post("/checkavailabletimes", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 router.post("/reservation", async (req, res) => {
-  let {thedate, pickedtime} = req.body.obj
+  let {thedate, pickedtime, email, googleId, username, address, phone} = req.body.obj
  console.log(thedate)
  console.log(pickedtime)
  const newApt = new appointment({
   thedate,
   timeslots: pickedtime,
   uid: "1",
+  email,
+  googleId,
+  username,
+  address,
+  phone
 });
  //
  try {

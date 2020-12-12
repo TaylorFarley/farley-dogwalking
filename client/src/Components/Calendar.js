@@ -6,7 +6,7 @@ import axios from "axios";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { DatePicker } from "@material-ui/pickers";
-
+import $ from "jquery";
 const Calendar = () => {
   const [selectedDate, setselectedDate] = useState(new Date());
   const [availableTimeSlots, setavailableTimeSlots] = useState([{}]);

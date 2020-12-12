@@ -6,9 +6,16 @@ import Home from "./Components/pages/Home";
 import Nav from './Components/Nav'
 import UserContext from "./context/UserContext";
 function App() {
-  const [userData, setUserData] = useState ({})
+  const [userData, setUserData] = useState ({
+    email: null,
+    googleId: null,
+    username: null,
+    _id:  null,
+    address: null,
+    phone: null
+  })
   return (
-
+  
     <Router>
         <UserContext.Provider value={{ userData, setUserData }}>
    <Nav />
