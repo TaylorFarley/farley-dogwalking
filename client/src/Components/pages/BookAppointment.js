@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 const BookAppointment = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [modalState, setmodalState] = React.useState(false);
   const { userData, setUserData } = useContext(UserContext);
   useEffect(() => {
     const getgoogleinfo = axios.post("/auth/getgoogleinfo").then((res) => {
@@ -66,13 +67,29 @@ const BookAppointment = () => {
       setUserData(res.data);
     });
   }, []);
-  const handleOpen = () => {
+  const changeHandler = (e) => {
+    setUserData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const handleOpenGuest = () => {
     setOpen(true);
+    setmodalState(true);
+  };
+
+  const handleOpenSignup = () => {
+    setOpen(true);
+    setmodalState(false);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+  const guestHandler = () => {
+    setOpen(false);
+  };
+
   return (
     <React.Fragment>
       <div>
@@ -90,55 +107,60 @@ const BookAppointment = () => {
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              <h1>Guest</h1>
+              {modalState?(<h1>Guest</h1>):(<h1>Sign Up</h1>)}
               <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
-                  <form className={classes.form} noValidate>
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      fullWidth
-                      id="email"
-                      label="Email Address"
-                      name="email"
-                      autoComplete="email"
-                      autoFocus
-                    />
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      fullWidth
-                      name="address"
-                      label="Address"
-                      type="address"
-                      id="address"
-                      autoComplete="address"
-                    />
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      fullWidth
-                      name="phone"
-                      label="Phone Number"
-                      type="phone"
-                      id="phone"
-                      autoComplete="phone"
-                    />
+                  {modalState ? (
+                    <form className={classes.form} noValidate>
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
+                        onChange={changeHandler}
+                      />
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="address"
+                        label="Address"
+                        type="address"
+                        id="address"
+                        autoComplete="address"
+                        onChange={changeHandler}
+                      />
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="phone"
+                        label="Phone Number"
+                        type="phone"
+                        id="phone"
+                        autoComplete="phone"
+                        onChange={changeHandler}
+                      />
 
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      color="primary"
-                      className={classes.submit}
-                    >
-                      Sign In
-                    </Button>
-                  </form>
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        onClick={guestHandler}
+                      >
+                        Continue
+                      </Button>
+                    </form>
+                  ) : null}
                 </div>
               </Container>
             </div>
@@ -198,7 +220,7 @@ const BookAppointment = () => {
                                         variant="contained"
                                         color="primary"
                                         className={classes.submit}
-                                        onClick={handleOpen}
+                                        onClick={handleOpenGuest}
                                       >
                                         Continue As Guest
                                       </Button>
@@ -245,15 +267,15 @@ const BookAppointment = () => {
                                           Sign In
                                         </Button>
                                         <Grid container>
-                                          <Grid item xs>
-                                            <Link href="#" variant="body2">
-                                              Forgot password?
-                                            </Link>
-                                          </Grid>
+                                          
                                           <Grid item>
-                                            <Link href="#" variant="body2">
-                                              {"Don't have an account? Sign Up"}
-                                            </Link>
+                                            <p
+                                              variant="body2"
+                                              onClick={handleOpenSignup}
+                                              style={{ cursor: "pointer" }}
+                                            >
+                                              Don't have an account? Sign Up
+                                            </p>
                                           </Grid>
                                         </Grid>
                                         <div class="separator">Or</div>
