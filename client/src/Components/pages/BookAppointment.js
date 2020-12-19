@@ -3,15 +3,14 @@ import GoogleButton from "react-google-button";
 import Calendar from "../Calendar";
 import axios from "axios";
 import UserContext from "../../context/UserContext";
-import $ from "jquery";
+
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 
-import Link from "@material-ui/core/Link";
+
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import TransitionsModal from "../Modal";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -25,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    overflow: "scroll",
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -51,6 +51,10 @@ const useStyles = makeStyles((theme) => ({
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
@@ -60,15 +64,29 @@ const BookAppointment = () => {
   const [open, setOpen] = React.useState(false);
   const [modalState, setmodalState] = React.useState(false);
   const { userData, setUserData } = useContext(UserContext);
+  const [newUserData, setnewUserData] = React.useState({});
+  const [signInUserData, setSignInUserData] = React.useState({})
   useEffect(() => {
     const getgoogleinfo = axios.post("/auth/getgoogleinfo").then((res) => {
-      console.log(res.data);
-
       setUserData(res.data);
     });
   }, []);
   const changeHandler = (e) => {
     setUserData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const changeHandlerNewUser = (e) => {
+    setnewUserData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const changeHandlerSignIn = (e) => {
+  
+    setSignInUserData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
@@ -90,6 +108,63 @@ const BookAppointment = () => {
     setOpen(false);
   };
 
+
+
+  const signUserUpHandler = () => {
+    axios
+      .post("/auth/register/", newUserData)
+      .then((res) => {
+        console.log(res);
+        setUserData({
+          ...userData,
+          username: newUserData.username,
+          email: newUserData.email,
+          password: newUserData.password,
+          verifyPassword: newUserData.verifyPassword,
+          address: newUserData.address,
+          phone: newUserData.phone,
+        });
+        let login = {
+          email: newUserData.email,
+          password: newUserData.password,
+        };
+        axios.post("/auth/login/", login).then((loginResponse) => {
+          localStorage.setItem("auth-token", loginResponse.data.token);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+ 
+    const signInHandler=async(e)=>{
+      e.preventDefault()
+      console.log('FRONT')
+      let login = {
+        email: signInUserData.email,
+        password: signInUserData.password,
+      };
+      console.log(signInUserData)
+      axios.post("/auth/login/", login).then((loginResponse) => {
+        console.log('BACK!!!!!!!!!!!!')
+        localStorage.setItem("auth-token", loginResponse.data.token);
+        console.log(loginResponse.data.user)
+        setUserData({
+          ...userData,
+          username: loginResponse.data.user.username,
+          email: loginResponse.data.user.email,         
+          address: loginResponse.data.user.address,
+          phone: loginResponse.data.user.phone,
+        });
+      });
+    } 
+
+
+
+
+  console.log(newUserData);
+  console.log(userData);
   return (
     <React.Fragment>
       <div>
@@ -107,7 +182,7 @@ const BookAppointment = () => {
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              {modalState?(<h1>Guest</h1>):(<h1>Sign Up</h1>)}
+              {modalState ? <h1>Guest</h1> : null}
               <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
@@ -160,7 +235,92 @@ const BookAppointment = () => {
                         Continue
                       </Button>
                     </form>
-                  ) : null}
+                  ) : (
+                    // form for singing up
+                    <form className={classes.form} noValidate>
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="username"
+                        label="Name"
+                        name="username"
+                        autoComplete="username"
+                        onChange={changeHandlerNewUser}
+                      />
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        onChange={changeHandlerNewUser}
+                      />
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="password"
+                        label="Password"
+                        type="password"
+                        name="password"
+                        autoComplete="password"
+                        onChange={changeHandlerNewUser}
+                      />
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="verifyPassword"
+                        label="Verify Password"
+                        type="password"
+                        name="verifyPassword"
+                        autoComplete="verifyPassword"
+                        onChange={changeHandlerNewUser}
+                      />
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="address"
+                        label="Address"
+                        type="address"
+                        id="address"
+                        autoComplete="address"
+                        onChange={changeHandlerNewUser}
+                      />
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="phone"
+                        label="Phone Number"
+                        type="phone"
+                        id="phone"
+                        autoComplete="phone"
+                        onChange={changeHandlerNewUser}
+                      />
+
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        onClick={signUserUpHandler}
+                      >
+                        Sign Up!
+                      </Button>
+                    </form>
+                    // end of signing up form
+                  )}
                 </div>
               </Container>
             </div>
@@ -244,6 +404,8 @@ const BookAppointment = () => {
                                           label="Email Address"
                                           name="email"
                                           autoComplete="email"
+                                          onChange={changeHandlerSignIn}
+                                        
                                         />
                                         <TextField
                                           variant="outlined"
@@ -255,6 +417,7 @@ const BookAppointment = () => {
                                           type="password"
                                           id="password"
                                           autoComplete="current-password"
+                                          onChange={changeHandlerSignIn}
                                         />
 
                                         <Button
@@ -263,11 +426,11 @@ const BookAppointment = () => {
                                           variant="contained"
                                           color="primary"
                                           className={classes.submit}
+                                          onClick={signInHandler}
                                         >
                                           Sign In
                                         </Button>
                                         <Grid container>
-                                          
                                           <Grid item>
                                             <p
                                               variant="body2"

@@ -4,7 +4,11 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username: String,
     googleId: String,    
-    email: String
+    email: String,
+    password: String,
+    address: String,
+    phone: String,
+    
 });
 
 const User = mongoose.model('user', userSchema);

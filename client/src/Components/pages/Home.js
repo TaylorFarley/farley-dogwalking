@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from "jquery";
+
 const Home = () => {
     return (
       <React.Fragment>

@@ -61,6 +61,7 @@ const Nav = () => {
                 style={{cursor:"pointer"}}
                 onClick={()=>{
                   console.log('clicked')
+                  localStorage.setItem("auth-token", "");
                   const logoutstat = axios
                   .post("/auth/logout")
                   .then((res) => {
@@ -72,7 +73,7 @@ const Nav = () => {
                                          
                   });
                 }}
-              >log out</li>):null}
+              >Log Out</li>):null}
              
             </ul>{" "}
           </nav>
