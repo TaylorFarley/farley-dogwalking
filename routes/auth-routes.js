@@ -7,13 +7,7 @@ let mongoose = require("mongoose");
 
 let string;
 
-// auth with google+
-router.get(
-  "/google",
-  passport.authenticate("google", {
-    scope: ["profile", "email"],
-  })
-);
+
 router.post("/logout", (req, res) => {
   req.logout();
   res.send("logged out");
@@ -100,10 +94,18 @@ router.post("/register", async (req, res) => {
   const savedUser = await newUser.save();
   res.send(savedUser);
 });
+// auth with google+
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  })
+);
+
 
 router.post("/getgoogleinfo", (req, res) => {
   res.send(string);
-  // console.log(`the string is ${string}`)
+ 
 });
 
 // callback route for google to redirect to

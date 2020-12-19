@@ -9,9 +9,9 @@ router.post("/bookAPI", async (req, res) => {
     let { thedate, uid } = req.body;
 
     let timeslots = [
-      { time1: "7:00am-7:30am" },
-      { time2: "7:30am-8:00am" },
-      { time3: "8:00am-8:30am" },
+      {time1: "7:00am-7:30am" },
+      {time2: "7:30am-8:00am" },
+      {time3: "8:00am-8:30am" },
       {time4: "11:00am-11:30am"},
       {time5: "11:30am-12:00pm"},
       {time6: "5:00pm-5:30am"},

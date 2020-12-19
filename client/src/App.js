@@ -28,10 +28,9 @@ function App() {
       const tokenRes = await Axios.post(
         "http://localhost:4000/auth/tokenIsValid",
         null,
-        { headers: { "x-auth-token": token } }
-        
-      );
-    
+        { headers: { "x-auth-token": token } }        
+      )
+     if(tokenRes.data.email)
         setUserData({
           email: tokenRes.data.email,        
           username: tokenRes.data.username,
@@ -39,7 +38,7 @@ function App() {
           address: tokenRes.data.address,
           phone: tokenRes.data.phone
         })
-    
+      
     };
 
     checkLoggedIn();

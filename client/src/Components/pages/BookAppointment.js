@@ -8,7 +8,6 @@ import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 
-
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -65,12 +64,16 @@ const BookAppointment = () => {
   const [modalState, setmodalState] = React.useState(false);
   const { userData, setUserData } = useContext(UserContext);
   const [newUserData, setnewUserData] = React.useState({});
-  const [signInUserData, setSignInUserData] = React.useState({})
+  const [signInUserData, setSignInUserData] = React.useState({});
   useEffect(() => {
     const getgoogleinfo = axios.post("/auth/getgoogleinfo").then((res) => {
+      console.log(res.data);
+
       setUserData(res.data);
+      console.log(userData)
     });
   }, []);
+
   const changeHandler = (e) => {
     setUserData((prevState) => ({
       ...prevState,
@@ -85,7 +88,6 @@ const BookAppointment = () => {
   };
 
   const changeHandlerSignIn = (e) => {
-  
     setSignInUserData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -107,8 +109,6 @@ const BookAppointment = () => {
   const guestHandler = () => {
     setOpen(false);
   };
-
-
 
   const signUserUpHandler = () => {
     axios
@@ -137,34 +137,28 @@ const BookAppointment = () => {
       });
   };
 
- 
-    const signInHandler=async(e)=>{
-      e.preventDefault()
-      console.log('FRONT')
-      let login = {
-        email: signInUserData.email,
-        password: signInUserData.password,
-      };
-      console.log(signInUserData)
-      axios.post("/auth/login/", login).then((loginResponse) => {
-        console.log('BACK!!!!!!!!!!!!')
-        localStorage.setItem("auth-token", loginResponse.data.token);
-        console.log(loginResponse.data.user)
-        setUserData({
-          ...userData,
-          username: loginResponse.data.user.username,
-          email: loginResponse.data.user.email,         
-          address: loginResponse.data.user.address,
-          phone: loginResponse.data.user.phone,
-        });
+  const signInHandler = async (e) => {
+    e.preventDefault();
+    console.log("FRONT");
+    let login = {
+      email: signInUserData.email,
+      password: signInUserData.password,
+    };
+    console.log(signInUserData);
+    axios.post("/auth/login/", login).then((loginResponse) => {
+      console.log("BACK!!!!!!!!!!!!");
+      localStorage.setItem("auth-token", loginResponse.data.token);
+      console.log(loginResponse.data.user);
+      setUserData({
+        ...userData,
+        username: loginResponse.data.user.username,
+        email: loginResponse.data.user.email,
+        address: loginResponse.data.user.address,
+        phone: loginResponse.data.user.phone,
       });
-    } 
+    });
+  };
 
-
-
-
-  console.log(newUserData);
-  console.log(userData);
   return (
     <React.Fragment>
       <div>
@@ -405,7 +399,6 @@ const BookAppointment = () => {
                                           name="email"
                                           autoComplete="email"
                                           onChange={changeHandlerSignIn}
-                                        
                                         />
                                         <TextField
                                           variant="outlined"
