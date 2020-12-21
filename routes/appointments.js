@@ -42,7 +42,7 @@ router.post("/checkavailabletimes", async (req, res) => {
     { time: "8:00am-8:30am" },
     {time: "11:00am-11:30am"},
     {time: "11:30am-12:00pm"},
-    {time: "5:00pm-5:30am"},
+    {time: "5:00pm-5:30pm"},
   ];
   try {
     console.log(req.body.thedate);

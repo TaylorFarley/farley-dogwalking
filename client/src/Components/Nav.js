@@ -11,12 +11,9 @@ const Nav = () => {
       <div class="container clearfix et_menu_container">
         <div class="title_container">
           <h1>
-            <a
-              href="https://www.elegantthemes.com/layouts/services/dog-walker-landing-page"
-              title="Divi Builder Layout Pack"
-            >
-              Dog Walker Landing{" "}
-            </a>
+          <Link to="/">  Stouffville Dog Walkers 	&#x1f43e;</Link>
+            {" "}
+            
           </h1>
         </div>
         <div id="et-top-navigation" data-height="66" data-fixed-height="40">
@@ -33,9 +30,7 @@ const Nav = () => {
                 id="menu-item-226592"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226592"
               >
-                <a href="https://www.elegantthemes.com/layouts/services/dog-walker-services-page/live-demo">
-                  Services
-                </a>
+                <Link to="#services">Services N' Rates</Link> 
               </li>
               <li
                 id="menu-item-226594"
@@ -50,9 +45,7 @@ const Nav = () => {
                 id="menu-item-226598"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226598"
               >
-                <a href="https://www.elegantthemes.com/layouts/services/dog-walker-contact-page/live-demo">
-                  Contact
-                </a>
+                  <Link to="#contact">Contact Us</Link> 
               </li>
 
               {userData.email?(<li

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
 import AvailableTimeSlots from "./AvailableTimeSlots";
 import { makeStyles } from "@material-ui/core/styles";
 import moment from "moment";
@@ -6,8 +6,10 @@ import axios from "axios";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { DatePicker } from "@material-ui/pickers";
-import $ from "jquery";
+import UserContext from "../context/UserContext";
+
 const Calendar = () => {
+  const { userData, setUserData } = useContext(UserContext);
   const [selectedDate, setselectedDate] = useState(new Date());
   const [availableTimeSlots, setavailableTimeSlots] = useState([{}]);
   const useStyles = makeStyles((theme) => ({
@@ -34,8 +36,10 @@ const Calendar = () => {
     "7:30am-8:00am",
     "8:00am-8:30am",
     "11:00am-11:30am",
+    "11:30am-12:00pm",
+    "5:00pm-5:30pm"
   ];
-
+  
   array1 = array1.filter((val) => !availableTimeSlots.includes(val));
 
   let objs = array1.map(function (x) {

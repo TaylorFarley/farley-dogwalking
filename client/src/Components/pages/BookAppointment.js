@@ -190,8 +190,7 @@ const BookAppointment = () => {
                         id="email"
                         label="Email Address"
                         name="email"
-                        autoComplete="email"
-                        autoFocus
+                        autoComplete="email"                       
                         onChange={changeHandler}
                       />
                       <TextField
@@ -355,6 +354,7 @@ const BookAppointment = () => {
                               {userData.email ? (
                                 <>
                                   <h1>Welcome! {userData.username}</h1>
+                                  
                                   <h2>
                                     Please select an available date for booking!
                                   </h2>
