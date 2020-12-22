@@ -1,8 +1,5 @@
 import React from "react";
-import { FormControl } from '@material-ui/core';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import FormHelperText from '@material-ui/core/FormHelperText';
+
 const Home = () => {
   return (
     <React.Fragment>
@@ -654,11 +651,7 @@ const Home = () => {
                             <div className="et_pb_text_inner">
                               <h3>Get in Touch By Phone Or email</h3>
                               <p>
-                              <FormControl>
-                              <InputLabel htmlFor="my-input">Email address</InputLabel>
-                               <Input id="my-input" aria-describedby="my-helper-text" />
-  <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-</FormControl>
+                           
                               </p>
                             </div>
                           </div>{" "}
