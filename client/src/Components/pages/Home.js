@@ -1,6 +1,22 @@
 import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+const useStyles = makeStyles((theme) => ({
+ 
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+ 
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 
+}));
 const Home = () => {
+  const classes = useStyles();
   return (
     <React.Fragment>
       <div id="et-main-area">
@@ -649,19 +665,66 @@ const Home = () => {
                         <div className="et_pb_column et_pb_column_2_5 et_pb_column_24  et_pb_css_mix_blend_mode_passthrough et-last-child">
                           <div className="et_pb_module et_pb_text et_pb_text_17  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
-                              <h3>Get in Touch By Phone Or email</h3>
+                              <h3 id="contact">Get in Touch By Phone Or email</h3>
                               <p>
-                           
+                              <form className={classes.form} noValidate>
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"                       
+                       
+                      />                     
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="phone"
+                        label="Phone Number"
+                        type="phone"
+                        id="phone"
+                        autoComplete="phone"
+                     
+                      />
+                       <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="message"
+                        label="Message"
+                        type="message"
+                        id="message"
+                        autoComplete="message"
+                        multiline
+                        rows={4}
+                      
+                      />
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                       
+                      >
+                        Continue
+                      </Button>
+                    </form>
                               </p>
                             </div>
                           </div>{" "}
-                          <div className="et_pb_module et_pb_text et_pb_text_18  et_pb_text_align_left et_pb_bg_layout_light">
+                          {/* <div className="et_pb_module et_pb_text et_pb_text_18  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
                               <h3>Phone</h3>
                               <p>(245) 426-3523</p>
                             </div>
-                          </div>{" "}
-                          <div className="et_pb_module et_pb_text et_pb_text_19  et_pb_text_align_left et_pb_bg_layout_light">
+                          </div>{" "} */}
+                          {/* <div className="et_pb_module et_pb_text et_pb_text_19  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
                               <h3>Email</h3>
                               <p>
@@ -674,8 +737,8 @@ const Home = () => {
                                 </a>
                               </p>
                               5 5 5 5 5 5 5 5 5 5 5
-                            </div>
-                          </div>
+                            </div> */}
+                          {/* </div> */}
                         </div>
                       </div>
                     </div>{" "}
