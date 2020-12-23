@@ -1,35 +1,8 @@
 var express = require("express");
 var router = express.Router();
-
+var sendEmail = require('../sendEmail')
 const appointment = require("../models/appointmentModel");
 let mongoose = require("mongoose");
-var nodemailer = require('nodemailer');
-const sendEmail = async()=>{
-  var transporter = nodemailer.createTransport({
-      host: "mail.privateemail.com",
-      port: 465,
-      secure: true,
-    auth: {
-      user: 'hi@twfmade.ca',
-      pass: 'sunfire312'
-    }
-  });
-  
-  var mailOptions = {
-    from: 'hi@twfmade.ca',
-    to: 'hi@twfmade.ca',
-    subject: 'Sending Email using Node.js',
-    text: 'That was easy!'
-  };
-  
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
-  }
   
 router.post("/checkavailabletimes", async (req, res) => {
   let timeslots_default = [
@@ -76,7 +49,7 @@ router.post("/reservation", async (req, res) => {
 
   appointment.find({ thedate: req.body.obj.thedate }, (error, data) => {
     if (data[0] == undefined) {
-      sendEmail()
+      sendEmail.sendEmail()
       console.log("No Dates Found");
       appointment.create(newApt, async(error, data) => {
         if (error) {
@@ -87,7 +60,7 @@ router.post("/reservation", async (req, res) => {
       });
     } else {
        console.log("A Date Found");   
-       sendEmail()  
+       sendEmail.sendEmail()  
       appointment.findOneAndUpdate(
         { thedate: req.body.obj.thedate }, 
         { $push: { timeslots: req.body.obj.pickedtime } },
