@@ -15,7 +15,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
 const contactForm = require('./routes/contact-form');
-const passportSetup = require('./config/passport-setup');
+const passportSetup = require('./passport-setup');
 // set up session cookies
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
