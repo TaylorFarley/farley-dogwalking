@@ -4,13 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-
-
 var appointmentRouter = require('./routes/appointments');
 var mongoDB = process.env.DB;
 var app = express();
-
-//auth
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
@@ -26,22 +22,12 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-//
-
 var cors = require('cors')
-
 app.use(cors()) // Use this after the variable declaration
-
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "client/build")));
-
-
-
 
 app.use('/appointments',appointmentRouter)
 app.use('/auth', authRoutes);
@@ -56,6 +42,11 @@ mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
 var db = mongoose.connection;
 //DB SETUP
 
+if(process.env.PORT){
+  app.use(express.static(path.join(__dirname, "client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  });
 
 
 
