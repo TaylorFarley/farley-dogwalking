@@ -4,9 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+
+
 var appointmentRouter = require('./routes/appointments');
 var mongoDB = process.env.DB;
 var app = express();
+
+//auth
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
@@ -22,18 +26,28 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+//
+
 var cors = require('cors')
+
 app.use(cors()) // Use this after the variable declaration
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+
+
 
 app.use('/appointments',appointmentRouter)
 app.use('/auth', authRoutes);
 app.use('/contactform', contactForm);
 
 // catch 404 and forward to error handler
+
 
 
 //DB SETUP
@@ -47,7 +61,19 @@ if(process.env.PORT){
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname + "/client/build/index.html"));
   });
+  
+  
+  app.use((req, res, next) => {
+    next(createError(404));
+  });
 
+  app.use(function (err, req, res, next) {
+    console.error(err.message);
+    if (!err.statusCode) err.statusCode = 500;
+    res.status(err.statusCode).send(err.message);
+  });
+  }
+  
 
 
 module.exports = app;
