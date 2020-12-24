@@ -1,6 +1,6 @@
 
 var nodemailer = require('nodemailer');
-const sendEmail = async(newApt)=>{
+const sendEmailContact = async(data)=>{
   var transporter = nodemailer.createTransport({
       host: "mail.privateemail.com",
       port: 465,
@@ -15,7 +15,7 @@ const sendEmail = async(newApt)=>{
     from: 'hi@twfmade.ca',
     to: 'hi@twfmade.ca',
     subject: 'New Apt Reqiest',
-    text: `${newApt.email}wants a walk at ${newApt.thedate} at ${newApt.timeslots}`
+    text: `${data.email} ${data.phone} ${data.message}`
   };
   
   transporter.sendMail(mailOptions, function(error, info){
@@ -28,4 +28,4 @@ const sendEmail = async(newApt)=>{
   });
   }
 
-  exports.sendEmail = sendEmail
+  exports.sendEmailContact = sendEmailContact

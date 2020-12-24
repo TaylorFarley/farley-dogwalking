@@ -14,6 +14,7 @@ var app = express();
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
+const contactForm = require('./routes/contact-form');
 const passportSetup = require('./config/passport-setup');
 // set up session cookies
 app.use(cookieSession({
@@ -44,6 +45,7 @@ app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use('/appointments',appointmentRouter)
 app.use('/auth', authRoutes);
+app.use('/contactform', contactForm);
 
 // catch 404 and forward to error handler
 

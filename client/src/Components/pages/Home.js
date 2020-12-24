@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
+import axios from 'axios'
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +16,27 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 const Home = () => {
+  
+
+  const [contactform, setcontactform] = useState({
+    email: undefined,
+    phone: undefined,
+    message: undefined
+  })
+
+  const changeHandler = (e) => {
+    setcontactform((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+const letsGo = ()=>{
+axios.post('contactform/sendEmailContact/',contactform)
+.then((res)=>{
+  console.log(res)
+})
+
+}
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -44,7 +65,7 @@ const Home = () => {
                           <div className="et_pb_button_module_wrapper et_pb_button_0_wrapper  et_pb_module ">
                             <a
                               className="et_pb_button et_pb_custom_button_icon et_pb_button_0 et_pb_bg_layout_dark"
-                              href="/#"
+                              href="#howitworks"
                               data-icon="&#x1f43e;"
                             >
                               Learn How it Works 
@@ -96,13 +117,13 @@ const Home = () => {
                         <div className="et_pb_column et_pb_column_4_4 et_pb_column_6  et_pb_css_mix_blend_mode_passthrough et-last-child">
                           <div className="et_pb_module et_pb_text et_pb_text_2  et_pb_text_align_center et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
-                              <h2>How it Works</h2>
+                              <h2 id="howitworks">How it Works</h2>
                             </div>
                           </div>{" "}
                           <div className="et_pb_button_module_wrapper et_pb_button_1_wrapper et_pb_button_alignment_center et_pb_module ">
                             <a
                               className="et_pb_button et_pb_custom_button_icon et_pb_button_1 et_pb_bg_layout_dark"
-                              href="/#"
+                              href="#contact"
                               data-icon="&#x1f43e;"
                             >
                               Get Started! 
@@ -138,7 +159,7 @@ const Home = () => {
                           <div className="et_pb_button_module_wrapper et_pb_button_2_wrapper et_pb_button_alignment_center et_pb_module ">
                             <a
                               className="et_pb_button et_pb_custom_button_icon et_pb_button_2 et_pb_bg_layout_dark"
-                              href="/#"
+                              href="#contact"
                               data-icon="&#x1f43e;"
                             >
                               Send a Message 
@@ -175,7 +196,7 @@ const Home = () => {
                           <div className="et_pb_button_module_wrapper et_pb_button_3_wrapper et_pb_button_alignment_center et_pb_module ">
                             <a
                               className="et_pb_button et_pb_custom_button_icon et_pb_button_3 et_pb_bg_layout_dark"
-                              href="/#"
+                              href="#contact"
                               data-icon="&#x1f43e;"
                             >
                               Learn More 
@@ -209,7 +230,7 @@ const Home = () => {
                           <div className="et_pb_button_module_wrapper et_pb_button_4_wrapper et_pb_button_alignment_center et_pb_module ">
                             <a
                               className="et_pb_button et_pb_custom_button_icon et_pb_button_4 et_pb_bg_layout_dark"
-                              href="/#"
+                              href="/BookAppointment"
                               data-icon="&#x1f43e;"
                             >
                               Schedule Online 
@@ -666,7 +687,7 @@ const Home = () => {
                             <div className="et_pb_text_inner">
                               <h3 id="contact">Get in Touch By Phone Or Email</h3>
                               <p>
-                              <form className={classes.form} noValidate>
+                      <form className={classes.form} noValidate>
                       <TextField
                         variant="outlined"
                         margin="normal"
@@ -675,7 +696,8 @@ const Home = () => {
                         id="email"
                         label="Email Address"
                         name="email"
-                        autoComplete="email"                       
+                        autoComplete="email"     
+                        onChange={changeHandler}                  
                        
                       />                     
                       <TextField
@@ -688,6 +710,7 @@ const Home = () => {
                         type="phone"
                         id="phone"
                         autoComplete="phone"
+                        onChange={changeHandler}      
                      
                       />
                        <TextField
@@ -700,6 +723,7 @@ const Home = () => {
                         type="message"
                         id="message"
                         autoComplete="message"
+                        onChange={changeHandler}      
                         multiline
                         rows={4}
                       
@@ -709,9 +733,10 @@ const Home = () => {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onClick={letsGo}
                        
                       >
-                        Continue
+                        Let's Chat!
                       </Button>
                     </form>
                               </p>
