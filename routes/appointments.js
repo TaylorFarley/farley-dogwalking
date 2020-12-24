@@ -49,7 +49,7 @@ router.post("/reservation", async (req, res) => {
 
   appointment.find({ thedate: req.body.obj.thedate }, (error, data) => {
     if (data[0] == undefined) {
-      sendEmail.sendEmail()
+      sendEmail.sendEmail(newApt)
       console.log("No Dates Found");
       appointment.create(newApt, async(error, data) => {
         if (error) {
@@ -60,7 +60,7 @@ router.post("/reservation", async (req, res) => {
       });
     } else {
        console.log("A Date Found");   
-       sendEmail.sendEmail()  
+       sendEmail.sendEmail(newApt)  
       appointment.findOneAndUpdate(
         { thedate: req.body.obj.thedate }, 
         { $push: { timeslots: req.body.obj.pickedtime } },
