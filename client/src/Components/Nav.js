@@ -30,7 +30,7 @@ const Nav = () => {
                 id="menu-item-226592"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226592"
               >
-                <Link to="#services">Services N' Rates</Link> 
+                <Link to="/#services">Services N' Rates</Link> 
               </li>
               <li
                 id="menu-item-226594"
@@ -45,7 +45,7 @@ const Nav = () => {
                 id="menu-item-226598"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226598"
               >
-                  <Link to="#contact">Contact Us</Link> 
+                  <Link to="/#contact">Contact Us</Link> 
               </li>
 
               {userData.email?(<li

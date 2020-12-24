@@ -80,12 +80,11 @@ const Home = () => {
                                 Entail?
                               </h2>
                               <p>
-                                With our daily dog walking service you can give
+                                With our daily dog walking, you can give
                                 your dog the daily exercise they require to stay
-                                fit and live a long, healthy life. With our
-                                customized times and services, you can rest
-                                assured that they will receive all the
-                                individual attention they need and desire.
+                                fit and live a long, healthy life. We cater to your schedule, using our online booking system you can rest
+                                assured that your pets will receive all the
+                                individual attention they need when you need it :)
                               </p>
                             </div>
                           </div>
