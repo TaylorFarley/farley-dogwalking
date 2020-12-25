@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Home = () => {
   
-
+  const [send, setsent] = useState (false)
   const [contactform, setcontactform] = useState({
     email: undefined,
     phone: undefined,
@@ -30,9 +30,13 @@ const Home = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
+
 const letsGo = ()=>{
+  setsent(true)
 axios.post('contactform/sendEmailContact/',contactform)
-.then((res)=>{
+.then((res)=>{ 
+ 
   console.log(res)
 })
 
@@ -584,7 +588,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                           <div className="et_pb_button_module_wrapper et_pb_button_8_wrapper  et_pb_module ">
                             <a
                               className="et_pb_button et_pb_custom_button_icon et_pb_button_8 et_pb_bg_layout_dark"
-                              href="/#"
+                              href="#contact"
                               data-icon="&#x1f43e;"
                             >
                               Get Started 
@@ -656,7 +660,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                           <div className="et_pb_button_module_wrapper et_pb_button_9_wrapper et_pb_button_alignment_center et_pb_module ">
                             <a
                               className="et_pb_button et_pb_custom_button_icon et_pb_button_9 et_pb_bg_layout_dark"
-                              href="/#"
+                              href="#contact"
                               data-icon="&#x1f43e;"
                             >
                               Get Started Today 
@@ -697,7 +701,8 @@ axios.post('contactform/sendEmailContact/',contactform)
                         label="Email Address"
                         name="email"
                         autoComplete="email"     
-                        onChange={changeHandler}                  
+                        onChange={changeHandler}     
+                        onClick = {()=>{setsent(false)}}             
                        
                       />                     
                       <TextField
@@ -711,7 +716,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                         id="phone"
                         autoComplete="phone"
                         onChange={changeHandler}      
-                     
+                        onClick = {()=>{setsent(false)}}             
                       />
                        <TextField
                         variant="outlined"
@@ -726,7 +731,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                         onChange={changeHandler}      
                         multiline
                         rows={4}
-                      
+                        onClick = {()=>{setsent(false)}}             
                       />
                       <Button
                         fullWidth
@@ -739,6 +744,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                         Let's Chat!
                       </Button>
                     </form>
+                    {send?('Thanks! We will get back to you ASAP!'):null}
                               </p>
                             </div>
                           </div>{" "}
