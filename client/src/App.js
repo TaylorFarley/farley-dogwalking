@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Axios from 'axios'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import $ from "jquery";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import BookAppointment from "./Components/pages/BookAppointment";
 import Home from "./Components/pages/Home";
 import Nav from './Components/Nav'
