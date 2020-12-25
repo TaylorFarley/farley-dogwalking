@@ -51,7 +51,7 @@ app.use('/contactform', contactForm);
 
 
 //DB SETUP
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
 .then(()=>{console.log('CONNECTED!!!!!!!!!!!!:)')});
 var db = mongoose.connection;
 //DB SETUP
