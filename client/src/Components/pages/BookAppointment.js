@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import GoogleButton from "react-google-button";
 import Calendar from "../Calendar";
+import SelectServices from "../SelectServices";
 import axios from "axios";
 import UserContext from "../../context/UserContext";
 
@@ -65,6 +66,7 @@ const BookAppointment = () => {
   const { userData, setUserData } = useContext(UserContext);
   const [newUserData, setnewUserData] = React.useState({});
   const [signInUserData, setSignInUserData] = React.useState({});
+  const [service, setservice] = React.useState('')
   useEffect(() => {
     const getgoogleinfo = axios.post("/auth/getgoogleinfo").then((res) => {
       console.log(res.data);
@@ -159,6 +161,12 @@ const BookAppointment = () => {
     });
   };
 
+  const ServicesNeeded = (selectedService)=>{
+    console.log(selectedService)
+    setservice(selectedService)
+
+  }
+console.log(service)
   return (
     <React.Fragment>
       <div>
@@ -359,8 +367,8 @@ const BookAppointment = () => {
                                     Please select an available date for booking!
                                   </h2>
                                   <p>
-                                    
-                                    <Calendar />
+                                    <SelectServices serviceFunction={ServicesNeeded}/>
+                                    <Calendar service={service} />
                                   </p>
                                 </>
                               ) : (

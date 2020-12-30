@@ -8,7 +8,7 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { DatePicker } from "@material-ui/pickers";
 import UserContext from "../context/UserContext";
 
-const Calendar = () => {
+const Calendar = (props) => {
   const { userData, setUserData } = useContext(UserContext);
   const [selectedDate, setselectedDate] = useState(new Date());
   const [availableTimeSlots, setavailableTimeSlots] = useState([{}]);
@@ -70,6 +70,7 @@ const Calendar = () => {
         availableTimeSlots={objs}
         selectedDate={selectedDate}
         fn={fn}
+        service={props.service}
       />
     </>
   );

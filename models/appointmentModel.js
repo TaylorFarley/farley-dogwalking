@@ -28,6 +28,9 @@ const AppointmentSchema = new Schema({
   timeslots: {
     type: Array
   },
+  service: {
+    type: String  
+  }, 
   date: {
     type: Date,
     default: Date.now

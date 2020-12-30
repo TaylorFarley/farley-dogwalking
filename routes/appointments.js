@@ -31,9 +31,10 @@ router.post("/checkavailabletimes", async (req, res) => {
   }
 });
 router.post("/reservation", async (req, res) => {
-  let {thedate, pickedtime, email, googleId, username, address, phone} = req.body.obj
+  let {thedate, pickedtime, email, googleId, username, address, phone, service} = req.body.obj
 //  console.log(thedate)
 //  console.log(pickedtime)
+console.log(service)
  const newApt = new appointment({
   thedate,
   timeslots: pickedtime,
@@ -42,15 +43,16 @@ router.post("/reservation", async (req, res) => {
   googleId,
   username,
   address,
-  phone
+  phone,
+  service
 });
  //
  try {
 
-  appointment.find({ thedate: req.body.obj.thedate }, (error, data) => {
+  appointment.find({ thedate: req.body.obj.thedate, service: req.body.obj.service }, (error, data) => {
     if (data[0] == undefined) {
       sendEmail.sendEmail(newApt)
-      console.log("No Dates Found");
+      console.log("No Dates & Service Found");
       appointment.create(newApt, async(error, data) => {
         if (error) {
           return next(error);
@@ -59,10 +61,10 @@ router.post("/reservation", async (req, res) => {
         }
       });
     } else {
-       console.log("A Date Found");   
+       console.log("A Date and Service Found");   
        sendEmail.sendEmail(newApt)  
       appointment.findOneAndUpdate(
-        { thedate: req.body.obj.thedate }, 
+        { thedate: req.body.obj.thedate, service: req.body.obj.service },        
         { $push: { timeslots: req.body.obj.pickedtime } },
         function (error, success) {
           if (error) {

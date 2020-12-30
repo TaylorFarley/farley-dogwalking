@@ -13,7 +13,7 @@ import UserContext from "../context/UserContext";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 200,
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -39,6 +39,7 @@ export default function SimpleSelect(props) {
       username: userData.username,      
       address: userData.address,
       phone: userData.phone,
+      service: props.service,
   }
     const reservation = () =>{
         setbook(true)
