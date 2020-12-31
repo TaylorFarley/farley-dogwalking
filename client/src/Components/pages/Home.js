@@ -81,12 +81,12 @@ axios.post('contactform/sendEmailContact/',contactform)
                             <span className="et_pb_image_wrap has-box-shadow-overlay">
                               <div className="box-shadow-overlay"></div>
                               <img
-                                src="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-18.jpg"
+                                src="images/dog-walker-18.jpg"
                                 alt=""
                                 title=""
                                 height="auto"
                                 width="auto"
-                                srcset="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-18.jpg 800w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-18-254x254.jpg 254w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-18-533x533.jpg 533w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-18-400x400.jpg 400w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-18-510x510.jpg 510w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-18-100x100.jpg 100w"
+                                srcset="images/dog-walker-18.jpg 800w, images/dog-walker-18-254x254.jpg 254w, images/dog-walker-18-533x533.jpg 533w, images/dog-walker-18-400x400.jpg 400w, images/dog-walker-18-510x510.jpg 510w, images/dog-walker-18-100x100.jpg 100w"
                                 sizes="(max-width: 800px) 100vw, 800px"
                                 className="wp-image-226582"
                               />
@@ -259,12 +259,12 @@ axios.post('contactform/sendEmailContact/',contactform)
                             <span className="et_pb_image_wrap has-box-shadow-overlay">
                               <div className="box-shadow-overlay"></div>
                               <img
-                                src="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-20.jpg"
+                                src="images/dog-walker-20.jpg"
                                 alt=""
                                 title=""
                                 height="auto"
                                 width="auto"
-                                srcset="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-20.jpg 400w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-20-254x254.jpg 254w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-20-100x100.jpg 100w"
+                                srcset="images/dog-walker-20.jpg 400w, images/dog-walker-20-254x254.jpg 254w, images/dog-walker-20-100x100.jpg 100w"
                                 sizes="(max-width: 400px) 100vw, 400px"
                                 className="wp-image-226574"
                               />
@@ -523,7 +523,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                               <div className="et_pb_module et_pb_image et_pb_image_8">
                                 <span className="et_pb_image_wrap ">
                                   <img
-                                    src="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28.jpg"
+                                    src="images/dog-walker-28.jpg"
                                     alt=""
                                     title=""
                                     height="auto"
@@ -611,33 +611,22 @@ axios.post('contactform/sendEmailContact/',contactform)
                         <div className="et_pb_column et_pb_column_1_3 et_pb_column_19  et_pb_css_mix_blend_mode_passthrough">
                           <div className="et_pb_module et_pb_text et_pb_text_13  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
-                              “Lorem ipsum dolor sit amet, consectetur
-                              adipiscing elit. Morbi volutpat, leo quis
-                              hendrerit dictum, sapien libero fermentum justo,
-                              eget faucibus diam arcu sit amet nisi. Duis rutrum
-                              diam ut enim malesuada lacinia.”
+                              “Taylor has walked my puppy for a couple of weeks now and it's gone really well. Her feedback is great and my puppy has a fun time and always comes home happy. Keep up the great walks.”
                             </div>
                           </div>
                         </div>{" "}
                         <div className="et_pb_column et_pb_column_1_3 et_pb_column_20  et_pb_css_mix_blend_mode_passthrough">
                           <div className="et_pb_module et_pb_text et_pb_text_14  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
-                              “Lorem ipsum dolor sit amet, consectetur
-                              adipiscing elit. Morbi volutpat, leo quis
-                              hendrerit dictum, sapien libero fermentum justo,
-                              eget faucibus diam arcu sit amet nisi. Duis rutrum
-                              diam ut enim malesuada lacinia.”
+                            “They are gentle but fun. They take my dogs on nice long walks and usually somewhere nice. Very trustworthy and reliable.”
                             </div>
                           </div>
                         </div>{" "}
                         <div className="et_pb_column et_pb_column_1_3 et_pb_column_21  et_pb_css_mix_blend_mode_passthrough et-last-child">
                           <div className="et_pb_module et_pb_text et_pb_text_15  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
-                              “Lorem ipsum dolor sit amet, consectetur
-                              adipiscing elit. Morbi volutpat, leo quis
-                              hendrerit dictum, sapien libero fermentum justo,
-                              eget faucibus diam arcu sit amet nisi. Duis rutrum
-                              diam ut enim malesuada lacinia.”
+                              
+                            “I was so satisfied by her service she was so patient and kind to my dog, I’ll recommend her for sure , she is an animal lover with a big kind heart.”
                             </div>
                           </div>
                         </div>
@@ -650,10 +639,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                             <div className="et_pb_text_inner">
                               <h2>Looking For A Professional?</h2>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Morbi volutpat, leo quis
-                                hendrerit dictum, sapien libero fermentum justo,
-                                eget faucibus diam arcu.
+                              Your dog is part of your family, so while in our care, they’re a part of ours. We have incorporated safety measures into every aspect of our services, whether out on a walk or in overnight care, so that while your pup is having fun, you can have peace of mind.
                               </p>
                             </div>
                           </div>{" "}
