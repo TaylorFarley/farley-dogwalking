@@ -9,7 +9,7 @@ import Select from "@material-ui/core/Select";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 200,
+    minWidth: 280,
     
   },
   selectEmpty: {
@@ -39,8 +39,8 @@ export default function SelectServices(props) {
           value={age}
           onChange={handleChange}
         >
-          <MenuItem value={'Walk'}>Walk</MenuItem>
-          <MenuItem value={'Park'}>Park</MenuItem>
+          <MenuItem value={'Walk'}>30 Minute Walk + Cool Down Time</MenuItem>
+          <MenuItem value={'Park'}>Half Hour at The Park!</MenuItem>
           
         </Select>
       </FormControl>

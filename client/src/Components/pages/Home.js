@@ -579,10 +579,8 @@ axios.post('contactform/sendEmailContact/',contactform)
                           <div className="et_pb_module et_pb_text et_pb_text_11  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
                               <h2>Winter Special</h2>
-                              <h3>15% Off all prices</h3>
-                              <p>
-                               Use Coupon at checkout tailz15
-                              </p>
+                              <h3>1st Walk Free!</h3>
+                              
                             </div>
                           </div>{" "}
                           <div className="et_pb_button_module_wrapper et_pb_button_8_wrapper  et_pb_module ">

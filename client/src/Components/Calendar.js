@@ -15,6 +15,7 @@ const Calendar = (props) => {
   const useStyles = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(3, 0, 2),
+      minWidth: 280,
     },
   }));
   const classes = useStyles();
@@ -64,6 +65,7 @@ const Calendar = (props) => {
           disablePast={true}
           onChange={setselectedDate}
           format="MM/dd/yyyy"
+          style={{minWidth: 280,}}
         />
       </MuiPickersUtilsProvider>
       <AvailableTimeSlots

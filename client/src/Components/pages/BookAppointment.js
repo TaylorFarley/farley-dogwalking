@@ -170,6 +170,7 @@ console.log(service)
   return (
     <React.Fragment>
       <div>
+
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
@@ -368,7 +369,10 @@ console.log(service)
                                   </h2>
                                   <p>
                                     <SelectServices serviceFunction={ServicesNeeded}/>
-                                    <Calendar service={service} />
+                                    {service?(
+                                       <Calendar service={service} />
+                                    ):null}
+                                   
                                   </p>
                                 </>
                               ) : (
