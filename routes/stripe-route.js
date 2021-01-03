@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const stripe = require("stripe")("sk_test_51I4UMhIJaZBTb5w9hbAEW31JKjzkoY7O3j6nRrXWqXTUUetG0aHQOXR7fw2cHGlgRyDgEsE4gg2RANJkEEsTEhbN00iLa5OZbw");
+const stripe = require("stripe")(process.env.STRIPE);
 const uuid = require("uuid/v4");
 
 
