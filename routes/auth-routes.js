@@ -9,9 +9,10 @@ let string;
 
 
 router.post("/logout", (req, res) => {
+  
   req.logout();
   res.send("logged out");
-
+  req.session = null
   // console.log(`the string is ${string}`)
 });
 
