@@ -19,12 +19,13 @@ const Calendar = (props) => {
     },
   }));
   const classes = useStyles();
-
+  let serv = props.service
   useEffect(() => {
     let thedate = moment(selectedDate).format("YYYY-MM-DD");
     const makeApt = axios
       .post("/appointments/checkavailabletimes", {
         thedate,
+        serv,
       })
       .then((res) => {
         setavailableTimeSlots(res.data);

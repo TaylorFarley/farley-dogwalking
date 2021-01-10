@@ -14,8 +14,8 @@ router.post("/checkavailabletimes", async (req, res) => {
     {time: "5:00pm-5:30pm"},
   ];
   try {
-    console.log(req.body.thedate);
-    appointment.find({ thedate: req.body.thedate }, (error, data) => {
+    console.log(req.body);
+    appointment.find({ thedate: req.body.thedate, service: req.body.serv }, (error, data) => {
       if (data[0] == undefined) {
         console.log("No Appointments Found");
         res.send(timeslots_default)
@@ -35,11 +35,10 @@ router.post("/reservation", async (req, res) => {
 //  console.log(thedate)
 //  console.log(pickedtime)
 console.log(service)
-let datetimeservice = thedate + ' ' + pickedtime + ' ' + service
  const newApt = new appointment({
   thedate,
   timeslots: pickedtime,
-  uid: datetimeservice,
+  uid: "1",
   email,
   googleId,
   username,
@@ -50,7 +49,7 @@ let datetimeservice = thedate + ' ' + pickedtime + ' ' + service
  //
  try {
 
-  appointment.find({ uid: datetimeservice, service: req.body.obj.service }, (error, data) => {
+  appointment.find({ thedate: req.body.obj.thedate, service: req.body.obj.service }, (error, data) => {
     if (data[0] == undefined) {
       sendEmail.sendEmail(newApt)
       console.log("No Dates & Service Found");
