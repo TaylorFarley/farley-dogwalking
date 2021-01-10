@@ -11,7 +11,7 @@ const Nav = () => {
       <div class="container clearfix et_menu_container">
         <div class="title_container">
           <h1>
-          <Link to="/">  Stouffville Dog Walkers 	&#x1f43e;</Link>
+          <Link to="/">Stouffville Dog Walker</Link>
             {" "}
             
           </h1>
