@@ -3,8 +3,8 @@ var nodemailer = require('nodemailer');
 const sendEmailContact = async(data)=>{
   var transporter = nodemailer.createTransport({
       host: "mail.privateemail.com",
-      port: 993,
-      secure: false,
+      port: 465,
+      secure: true,
     auth: {
       user:  process.env.AUTH,
       pass:  process.env.PASSWORD,
@@ -14,7 +14,7 @@ const sendEmailContact = async(data)=>{
   var mailOptions = {
     from: 'hi@twfmade.ca',
     to: 'hi@twfmade.ca',
-    subject: 'Dog walker contact',
+    subject: 'New Apt Request',
     text: `${data.email} ${data.phone} ${data.message}`
   };
   
