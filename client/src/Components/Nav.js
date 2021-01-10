@@ -5,7 +5,7 @@ import axios from 'axios'
 import UserContext from "../context/UserContext";
 const Nav = () => {
   const { userData, setUserData } = useContext(UserContext);
-  console.log(userData)
+
   return (
     <header id="main-header" data-height-onload="66">
       <div class="container clearfix et_menu_container">

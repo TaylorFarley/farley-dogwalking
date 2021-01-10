@@ -449,7 +449,7 @@ console.log(service)
                                         </Grid>
                                         <div class="separator">Or</div>
                                         <div>
-                                          <a href="http://localhost:4000/auth/google">
+                                          <a href="https://farley-dogwalking.herokuapp.com/auth/google">
                                             <GoogleButton
                                               style={{ width: "100%" }}
                                             />
