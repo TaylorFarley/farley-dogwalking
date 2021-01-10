@@ -4,7 +4,7 @@ const sendEmailContact = async(data)=>{
   var transporter = nodemailer.createTransport({
       host: "mail.privateemail.com",
       port: 587,
-      secure: false,
+      secure: true,
     auth: {
       user:  process.env.AUTH,
       pass:  process.env.PASSWORD,
