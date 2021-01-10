@@ -18,7 +18,7 @@ passport.use(
         // options for google strategy
         clientID: process.env.clientID,
         clientSecret: process.env.clientSecret,
-        callbackURL: 'http://localhost:4000/auth/google/redirect'
+        callbackURL: 'https://farley-dogwalking.herokuapp.com/auth/google/redirect'
     }, (accessToken, refreshToken, profile, done) => {
         // console.log(profile.emails[0].value)
         // check if user already exists in our own db

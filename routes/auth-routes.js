@@ -115,7 +115,7 @@ router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   // res.send(req.user);
   console.log(req.user);
   string = req.user;
-  res.redirect("http://localhost:3000/bookappointment");
+  res.redirect("https://farley-dogwalking.herokuapp.com/bookappointment");
 });
 
 module.exports = router;
