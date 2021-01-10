@@ -49,7 +49,7 @@ console.log(service)
  //
  try {
 
-  appointment.find({ thedate: req.body.obj.thedate, service: req.body.obj.service, timeslots: req.body.obj.pickedtime }, (error, data) => {
+  appointment.find({ thedate: req.body.obj.thedate, service: req.body.obj.service }, (error, data) => {
     if (data[0] == undefined) {
       sendEmail.sendEmail(newApt)
       console.log("No Dates & Service Found");
