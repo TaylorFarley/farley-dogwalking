@@ -35,10 +35,11 @@ router.post("/reservation", async (req, res) => {
 //  console.log(thedate)
 //  console.log(pickedtime)
 console.log(service)
+let datetime = thedate + ' ' + pickedtime
  const newApt = new appointment({
   thedate,
   timeslots: pickedtime,
-  uid: "1",
+  uid: datetime,
   email,
   googleId,
   username,
