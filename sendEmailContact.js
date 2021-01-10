@@ -3,8 +3,8 @@ var nodemailer = require('nodemailer');
 const sendEmailContact = async(data)=>{
   var transporter = nodemailer.createTransport({
       host: "mail.privateemail.com",
-      port: 465,
-      secure: true,
+      port: 143,
+      secure: false,
     auth: {
       user:  process.env.AUTH,
       pass:  process.env.PASSWORD,
