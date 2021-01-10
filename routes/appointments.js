@@ -35,11 +35,11 @@ router.post("/reservation", async (req, res) => {
 //  console.log(thedate)
 //  console.log(pickedtime)
 console.log(service)
-let datetime = thedate + ' ' + pickedtime
+let datetimeservice = thedate + ' ' + pickedtime + ' ' + service
  const newApt = new appointment({
   thedate,
   timeslots: pickedtime,
-  uid: datetime,
+  uid: datetimeservice,
   email,
   googleId,
   username,
@@ -50,7 +50,7 @@ let datetime = thedate + ' ' + pickedtime
  //
  try {
 
-  appointment.find({ uid: datetime, service: req.body.obj.service }, (error, data) => {
+  appointment.find({ uid: datetimeservice, service: req.body.obj.service }, (error, data) => {
     if (data[0] == undefined) {
       sendEmail.sendEmail(newApt)
       console.log("No Dates & Service Found");
