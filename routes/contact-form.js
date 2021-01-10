@@ -5,7 +5,7 @@ const router = require("express").Router();
 
 
 router.post('/sendEmailContact', async (req, res) => {
-  console.log(req)
+ 
  const sgMail = require('@sendgrid/mail')
  sgMail.setApiKey(process.env.SENDGRID_API_KEY)
  const msg = {
