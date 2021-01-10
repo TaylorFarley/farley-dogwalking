@@ -50,7 +50,7 @@ let datetime = thedate + ' ' + pickedtime
  //
  try {
 
-  appointment.find({ thedate: req.body.obj.thedate, service: req.body.obj.service }, (error, data) => {
+  appointment.find({ uid: datetime, service: req.body.obj.service }, (error, data) => {
     if (data[0] == undefined) {
       sendEmail.sendEmail(newApt)
       console.log("No Dates & Service Found");
