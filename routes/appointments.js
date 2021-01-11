@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var sendEmail = require('../sendEmail')
 const appointment = require("../models/appointmentModel");
+const appointmentClient = require("../models/appointmentClientModel");
 let mongoose = require("mongoose");
   
 router.post("/checkavailabletimes", async (req, res) => {
@@ -15,7 +16,7 @@ router.post("/checkavailabletimes", async (req, res) => {
   ];
   try {
     console.log(req.body);
-    appointment.find({ thedate: req.body.thedate, service: req.body.serv }, (error, data) => {
+    appointment.find({ thedate: req.body.thedate}, (error, data) => {
       if (data[0] == undefined) {
         console.log("No Appointments Found");
         res.send(timeslots_default)
@@ -35,7 +36,7 @@ router.post("/reservation", async (req, res) => {
 //  console.log(thedate)
 //  console.log(pickedtime)
 console.log(service)
- const newApt = new appointment({
+ const newAptClient = new appointmentClient({
   thedate,
   timeslots: pickedtime,
   uid: "1",
@@ -46,23 +47,37 @@ console.log(service)
   phone,
   service
 });
+
+const newApt = new appointment({
+  thedate,
+  timeslots: pickedtime,
+  uid: "1",  
+  service,
+});
  //
  try {
 
   appointment.find({ thedate: req.body.obj.thedate, service: req.body.obj.service }, (error, data) => {
     if (data[0] == undefined) {
-      sendEmail.sendEmail(newApt)
+      sendEmail.sendEmail(newAptClient)
       console.log("No Dates & Service Found");
       appointment.create(newApt, async(error, data) => {
         if (error) {
           return next(error);
         } else {
               res.send('successfully created')
+              appointmentClient.create(newAptClient, async(error, data) => {
+                if (error) {
+                  return next(error);
+                } else {
+                     console.log('done')
+                }
+              });
         }
       });
     } else {
        console.log("A Date and Service Found");   
-       sendEmail.sendEmail(newApt)  
+       sendEmail.sendEmail(newAptClient)  
       appointment.findOneAndUpdate(
         { thedate: req.body.obj.thedate, service: req.body.obj.service },        
         { $push: { timeslots: req.body.obj.pickedtime } },
@@ -71,6 +86,13 @@ console.log(service)
               console.log(error);
           } else {
               console.log(success);
+              appointmentClient.create(newAptClient, async(error, data) => {
+                if (error) {
+                  return next(error);
+                } else {
+                     console.log('done')
+                }
+              });
           }
       }
          );
