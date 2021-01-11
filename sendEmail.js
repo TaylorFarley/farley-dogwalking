@@ -8,8 +8,8 @@ const sendEmail = async(newApt)=>{
       to: 'hi@twfmade.ca', // Change to your recipient
       from: 'hi@twfmade.ca', // Change to your verified sender
       subject: 'email from contact form dogwalking',
-      text: `${newApt.email}wants a walk at ${newApt.thedate} at ${newApt.timeslots}`,
-      html: `${newApt.email}wants a walk at ${newApt.thedate} at ${newApt.timeslots}`,
+      text: `${newApt.email} wants a walk at ${newApt.thedate} at ${newApt.timeslots}`,
+      html: `${newApt.email} wants a walk at ${newApt.thedate} at ${newApt.timeslots}`,
     }
     sgMail
       .send(msg)
