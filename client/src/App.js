@@ -26,7 +26,7 @@ function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:4000/auth/tokenIsValid",
+        "https://farley-dogwalking.herokuapp.com/auth/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }        
       )
