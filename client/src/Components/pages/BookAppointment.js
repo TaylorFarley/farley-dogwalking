@@ -168,9 +168,7 @@ const BookAppointment = () => {
         phone: false
       }))
     }
-    console.log(newUserData.password)
-    console.log(newUserData.verifyPassword)
-    console.log(validsignin.passwordverification)
+
     if(newUserData.password!==newUserData.verifyPassword)
     {
       setvalidsignin((prevState)=>({
@@ -223,11 +221,11 @@ const BookAppointment = () => {
       email: signInUserData.email,
       password: signInUserData.password,
     };
-    console.log(signInUserData);
+  
     axios.post("/auth/login/", login).then((loginResponse) => {
      
       localStorage.setItem("auth-token", loginResponse.data.token);
-      console.log(loginResponse.data.user);
+
       setUserData({
         ...userData,
         username: loginResponse.data.user.username,
@@ -239,10 +237,10 @@ const BookAppointment = () => {
   };
 
   const ServicesNeeded = (selectedService) => {
-    console.log(selectedService);
+    
     setservice(selectedService);
   };
-  console.log(service);
+
   return (
     <React.Fragment>
       <div>
