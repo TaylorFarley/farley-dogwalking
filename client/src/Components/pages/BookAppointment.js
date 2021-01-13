@@ -4,7 +4,7 @@ import Calendar from "../Calendar";
 import SelectServices from "../SelectServices";
 import axios from "axios";
 import UserContext from "../../context/UserContext";
-
+import validator from "validator";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -64,15 +64,18 @@ const BookAppointment = () => {
   const [open, setOpen] = React.useState(false);
   const [modalState, setmodalState] = React.useState(false);
   const { userData, setUserData } = useContext(UserContext);
+  const [guestUserData, setguestUserData] = React.useState({});
   const [newUserData, setnewUserData] = React.useState({});
   const [signInUserData, setSignInUserData] = React.useState({});
-  const [service, setservice] = React.useState('')
+  const [service, setservice] = React.useState("");
+  const [valid, setvalid] = React.useState({ email: true, phone: true });
+  const [validsignin, setvalidsignin] = React.useState({ email: true, phone: true, passwordverification: true });
   useEffect(() => {
     const getgoogleinfo = axios.post("/auth/getgoogleinfo").then((res) => {
-      console.log(res.data);
+   
 
       setUserData(res.data);
-      console.log(userData)
+    
     });
   }, []);
 
@@ -82,6 +85,13 @@ const BookAppointment = () => {
       [e.target.name]: e.target.value,
     }));
   };
+  const changeHandlerGuestUser = (e) => {
+    setguestUserData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   const changeHandlerNewUser = (e) => {
     setnewUserData((prevState) => ({
       ...prevState,
@@ -109,14 +119,78 @@ const BookAppointment = () => {
     setOpen(false);
   };
   const guestHandler = () => {
-    setOpen(false);
+    const isValidPhoneNumber = validator.isMobilePhone(guestUserData.phone);
+    const isValidEmail = validator.isEmail(guestUserData.email);
+ 
+    // setOpen(false);
+    if (isValidPhoneNumber) {
+      setUserData((prevState) => ({
+        ...prevState,
+       phone: guestUserData.phone,
+      }));
+   
+    } else {
+      setvalid((prevState)=>({
+        ...prevState,
+        phone: false
+      }))
+ 
+    }
+    if (isValidEmail) {
+      setUserData((prevState) => ({
+        ...prevState,
+       email: guestUserData.email,
+      }));
+    } else {
+   
+      setvalid((prevState)=>({
+        ...prevState,
+        email: false
+      }))
+    }
+    if (isValidEmail && isValidPhoneNumber){
+      setUserData((prevState) => ({
+        ...prevState,
+       address: guestUserData.address,
+      }));
+      setOpen(false);
+    }
   };
 
   const signUserUpHandler = () => {
-    axios
+    const isValidPhoneNumber = validator.isMobilePhone(newUserData.phone);
+    const isValidEmail = validator.isEmail(newUserData.email);
+    
+    if(!isValidPhoneNumber)
+    {
+      setvalidsignin((prevState)=>({
+        ...prevState,
+        phone: false
+      }))
+    }
+    console.log(newUserData.password)
+    console.log(newUserData.verifyPassword)
+    console.log(validsignin.passwordverification)
+    if(newUserData.password!==newUserData.verifyPassword)
+    {
+      setvalidsignin((prevState)=>({
+        ...prevState,
+        passwordverification: false
+      }))
+    }
+    if(!isValidEmail)
+    {
+      setvalidsignin((prevState)=>({
+        ...prevState,
+        email: false
+      }))
+    }
+    if(isValidEmail & isValidPhoneNumber & newUserData.password===newUserData.verifyPassword)
+    {
+      axios
       .post("/auth/register/", newUserData)
       .then((res) => {
-        console.log(res);
+    
         setUserData({
           ...userData,
           username: newUserData.username,
@@ -137,18 +211,21 @@ const BookAppointment = () => {
       .catch((error) => {
         console.log(error);
       });
+      setOpen(false);
+    }
+    
   };
 
   const signInHandler = async (e) => {
     e.preventDefault();
-    console.log("FRONT");
+  
     let login = {
       email: signInUserData.email,
       password: signInUserData.password,
     };
     console.log(signInUserData);
     axios.post("/auth/login/", login).then((loginResponse) => {
-      console.log("BACK!!!!!!!!!!!!");
+     
       localStorage.setItem("auth-token", loginResponse.data.token);
       console.log(loginResponse.data.user);
       setUserData({
@@ -161,16 +238,14 @@ const BookAppointment = () => {
     });
   };
 
-  const ServicesNeeded = (selectedService)=>{
-    console.log(selectedService)
-    setservice(selectedService)
-
-  }
-console.log(service)
+  const ServicesNeeded = (selectedService) => {
+    console.log(selectedService);
+    setservice(selectedService);
+  };
+  console.log(service);
   return (
     <React.Fragment>
       <div>
-
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
@@ -199,9 +274,10 @@ console.log(service)
                         id="email"
                         label="Email Address"
                         name="email"
-                        autoComplete="email"                       
-                        onChange={changeHandler}
+                        autoComplete="email"
+                        onChange={changeHandlerGuestUser}
                       />
+                            {valid.email?(null):<h1>invalid email</h1>}
                       <TextField
                         variant="outlined"
                         margin="normal"
@@ -212,7 +288,7 @@ console.log(service)
                         type="address"
                         id="address"
                         autoComplete="address"
-                        onChange={changeHandler}
+                        onChange={changeHandlerGuestUser}
                       />
                       <TextField
                         variant="outlined"
@@ -224,9 +300,9 @@ console.log(service)
                         type="phone"
                         id="phone"
                         autoComplete="phone"
-                        onChange={changeHandler}
+                        onChange={changeHandlerGuestUser}
                       />
-
+                      {valid.phone?(null):<h1>invalid phone</h1>}
                       <Button
                         fullWidth
                         variant="contained"
@@ -262,6 +338,7 @@ console.log(service)
                         autoComplete="email"
                         onChange={changeHandlerNewUser}
                       />
+                      {validsignin.email?(null):(<>Please enter Valid Email</>)}
                       <TextField
                         variant="outlined"
                         margin="normal"
@@ -286,6 +363,8 @@ console.log(service)
                         autoComplete="verifyPassword"
                         onChange={changeHandlerNewUser}
                       />
+                       {validsignin.passwordverification?(null):(<>Passwords do not match</>)}
+                   
                       <TextField
                         variant="outlined"
                         margin="normal"
@@ -310,7 +389,7 @@ console.log(service)
                         autoComplete="phone"
                         onChange={changeHandlerNewUser}
                       />
-
+ {validsignin.phone?(null):(<>Please enter valid phone number</>)}
                       <Button
                         fullWidth
                         variant="contained"
@@ -363,16 +442,17 @@ console.log(service)
                               {userData.email ? (
                                 <>
                                   <h1>Welcome! {userData.username}</h1>
-                                  
+
                                   <h2>
                                     Please select an available date for booking!
                                   </h2>
                                   <p>
-                                    <SelectServices serviceFunction={ServicesNeeded}/>
-                                    {service?(
-                                       <Calendar service={service} />
-                                    ):null}
-                                   
+                                    <SelectServices
+                                      serviceFunction={ServicesNeeded}
+                                    />
+                                    {service ? (
+                                      <Calendar service={service} />
+                                    ) : null}
                                   </p>
                                 </>
                               ) : (
