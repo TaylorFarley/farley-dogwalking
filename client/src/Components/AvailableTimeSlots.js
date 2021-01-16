@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -23,11 +23,66 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SimpleSelect(props) {
+  const SITE_KEY = "6LchJioaAAAAADlyrXnpBEQZckXkhjS4kGz6rkuC";
   const { userData, setUserData } = useContext(UserContext);
   const [book, setbook] = useState(false);
   const classes = useStyles();
   const [availabletimeslot, setavailabletimeslot] = React.useState("");
+  const [response, setResponse] = useState(null);
   let thedate = moment(props.selectedDate).format("YYYY-MM-DD");
+  useEffect(() => {
+    const loadScriptByURL = (id, url, callback) => {
+      const isScriptExist = document.getElementById(id);
+
+      if (!isScriptExist) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        script.id = id;
+        script.onload = function () {
+          if (callback) callback();
+        };
+        document.body.appendChild(script);
+      }
+
+      if (isScriptExist && callback) callback();
+    }
+
+    // load the script by passing the URL
+    loadScriptByURL("recaptcha-key", `https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`, function () {
+      console.log("Script loaded!");
+    });
+  }, []);
+  const handleOnClick = e => {
+    e.preventDefault();
+   
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute(SITE_KEY, { action: 'submit' }).then(token => {
+        submitData(token);
+      });
+    });
+  }
+
+  const submitData = token => {
+    // call a backend API to verify reCAPTCHA response
+    fetch('/verify', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "email": userData.email,
+        "g-recaptcha-response": token
+      })
+    }).then(res => res.json()).then(res => {
+   
+      setResponse(res);
+   
+      if(res.success)
+      reservation()
+
+    });
+  }
 
   const handleChange = (event) => {
     setavailabletimeslot(event.target.value);
@@ -71,7 +126,7 @@ export default function SimpleSelect(props) {
             );
           })}
         </Select>
-        <Button variant="outlined" onClick={reservation}>
+        <Button variant="outlined" onClick={handleOnClick}>
           Book!
         </Button>
    

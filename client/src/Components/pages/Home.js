@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import TextField from "@material-ui/core/TextField";
 import axios from 'axios'
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,12 +18,67 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   
   const [send, setsent] = useState (false)
+  const [response, setResponse] = useState(null);
+  const SITE_KEY = "6LchJioaAAAAADlyrXnpBEQZckXkhjS4kGz6rkuC";
   const [contactform, setcontactform] = useState({
     email: undefined,
     phone: undefined,
     message: undefined
   })
+  useEffect(() => {
+    const loadScriptByURL = (id, url, callback) => {
+      const isScriptExist = document.getElementById(id);
 
+      if (!isScriptExist) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        script.id = id;
+        script.onload = function () {
+          if (callback) callback();
+        };
+        document.body.appendChild(script);
+      }
+
+      if (isScriptExist && callback) callback();
+    }
+
+    // load the script by passing the URL
+    loadScriptByURL("recaptcha-key", `https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`, function () {
+      console.log("Script loaded!");
+    });
+  }, []);
+
+  const handleOnClick = e => {
+    e.preventDefault();
+   
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute(SITE_KEY, { action: 'submit' }).then(token => {
+        submitData(token);
+      });
+    });
+  }
+
+  const submitData = token => {
+    // call a backend API to verify reCAPTCHA response
+    fetch('/verify', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "email": contactform.email,
+        "g-recaptcha-response": token
+      })
+    }).then(res => res.json()).then(res => {
+   
+      setResponse(res);
+      console.log(res)
+      if(res.success)
+      letsGo()
+
+    });
+  }
   const changeHandler = (e) => {
     setcontactform((prevState) => ({
       ...prevState,
@@ -722,7 +777,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={letsGo}
+                        onClick={handleOnClick}
                        
                       >
                         Let's Chat!

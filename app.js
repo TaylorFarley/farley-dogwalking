@@ -16,6 +16,7 @@ const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
 const contactForm = require('./routes/contact-form');
 const checkout = require('./routes/stripe-route');
+const verify = require('./routes/verify');
 const passportSetup = require('./passport-setup');
 // set up session cookies
 app.use(cookieSession({
@@ -47,7 +48,7 @@ app.use('/appointments',appointmentRouter)
 app.use('/auth', authRoutes);
 app.use('/contactform', contactForm);
 app.use('/checkout', checkout);
-
+app.use('/verify', verify);
 // catch 404 and forward to error handler
 
 
