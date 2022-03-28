@@ -117,7 +117,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                         <div className="et_pb_column et_pb_column_3_5 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough">
                           <div className="et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
-                              <h1>Tailz N' TraiZ&#8217;s Dog Walking</h1>
+                              <h1>Tailz N' TraiZ&#8217;s Stouffville <br></br>Dog Walking</h1>
                               <p>Only the Best for Our Best Friends</p>
                             </div>
                           </div>{" "}
