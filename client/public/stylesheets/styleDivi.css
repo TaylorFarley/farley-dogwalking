@@ -11458,7 +11458,8 @@ a.et_pb_more_button:after {
 .mobile_menu_bar {
 	position: relative;
 	display: block;
-	line-height: 0
+	line-height: 0;
+	padding: 5vw;
 }
 
 .mobile_menu_bar:before {

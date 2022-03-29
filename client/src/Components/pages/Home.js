@@ -110,7 +110,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                 <div className="et-l et-l--post">
                   <div className="et_builder_inner_content et_pb_gutters3">
                     <div className="et_pb_section et_pb_section_0 et_pb_section_parallax et_pb_with_background et_section_regular">
-                    <span className="et_parallax_bg_wrap"><span className="et_parallax_bg" style={{backgroundImage: 'url(https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-10-3.png)'}} /></span>
+                    <span className="et_parallax_bg_wrap"><span className="et_parallax_bg" style={{backgroundImage: 'url(images/dog-walker-10-3.png)'}} /></span>
                     <div className="et_pb_row et_pb_row_0">
                       <div className="et_pb_column et_pb_column_3_5 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough">
                         <div className="et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_light">
@@ -138,14 +138,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                           <img loading="lazy" width={400} height={400} src="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28.jpg" alt="" title srcSet="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28.jpg 400w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28-254x254.jpg 254w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28-100x100.jpg 100w" sizes="(max-width: 400px) 100vw, 400px" className="wp-image-226569" /></span>
                         </div>
                       </div>
-                      <div className="et_pb_column et_pb_column_1_3 et_pb_column_4  et_pb_css_mix_blend_mode_passthrough et-last-child">
-                        <ul className="et_pb_module et_pb_social_media_follow et_pb_social_media_follow_0 clearfix  et_pb_text_align_right et_pb_bg_layout_light">
-                          <li className="et_pb_social_media_follow_network_0 et_pb_social_icon et_pb_social_network_link  et-social-facebook"><a href="#" className="icon et_pb_with_border" title="Follow on Facebook" target="_blank"><span className="et_pb_social_media_follow_network_name" aria-hidden="true">Follow</span></a></li>
-                          <li className="et_pb_social_media_follow_network_1 et_pb_social_icon et_pb_social_network_link  et-social-twitter"><a href="#" className="icon et_pb_with_border" title="Follow on Twitter" target="_blank"><span className="et_pb_social_media_follow_network_name" aria-hidden="true">Follow</span></a></li>
-                          <li className="et_pb_social_media_follow_network_2 et_pb_social_icon et_pb_social_network_link  et-social-instagram"><a href="#" className="icon et_pb_with_border" title="Follow on Instagram" target="_blank"><span className="et_pb_social_media_follow_network_name" aria-hidden="true">Follow</span></a></li>
-                          <li className="et_pb_social_media_follow_network_3 et_pb_social_icon et_pb_social_network_link  et-social-youtube"><a href="#" className="icon et_pb_with_border" title="Follow on Youtube" target="_blank"><span className="et_pb_social_media_follow_network_name" aria-hidden="true">Follow</span></a></li>
-                        </ul>
-                      </div>
+                   
                     </div>
                     </div>{" "}
                     <div className="et_pb_section et_pb_section_1 et_pb_with_background et_section_regular">
