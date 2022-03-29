@@ -135,7 +135,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                       <div className="et_pb_column et_pb_column_1_3 et_pb_column_3  et_pb_css_mix_blend_mode_passthrough">
                         <div className="et_pb_module et_pb_image et_pb_image_1">
                           <span className="et_pb_image_wrap has-box-shadow-overlay"><div className="box-shadow-overlay" />
-                          <img loading="lazy" width={400} height={400} src="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28.jpg" alt="" title srcSet="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28.jpg 400w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28-254x254.jpg 254w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28-100x100.jpg 100w" sizes="(max-width: 400px) 100vw, 400px" className="wp-image-226569" /></span>
+                          <img loading="lazy" width={400} height={400} src="images/IMG_2082.jpg" alt="" title srcSet="images/IMG_2082.jpg 400w, images/IMG_2082.jpg 254w, images/IMG_2082.jpg 100w" sizes="(max-width: 400px) 100vw, 400px" className="wp-image-226569" /></span>
                         </div>
                       </div>
                    
@@ -171,13 +171,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                             </div>
                           </div>{" "}
                           <div className="et_pb_button_module_wrapper et_pb_button_1_wrapper et_pb_button_alignment_center et_pb_module ">
-                            <a
-                              className="et_pb_button et_pb_custom_button_icon et_pb_button_1 et_pb_bg_layout_dark"
-                              href="#contact"
-                              data-icon="&#x1f43e;"
-                            >
-                              Get Started! 
-                            </a>
+                           
                           </div>
                         </div>
                       </div>{" "}
@@ -194,7 +188,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                               </div>
                               <div className="et_pb_blurb_container">
                                 <h4 className="et_pb_module_header">
-                                  <span>ContacT</span>
+                                  <span>Step One: ContacT</span>
                                 </h4>
                                 <div className="et_pb_blurb_description">
                                   <p>
@@ -228,7 +222,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                               </div>
                               <div className="et_pb_blurb_container">
                                 <h4 className="et_pb_module_header">
-                                  <span>Meet Tay and A</span>
+                                  <span>Step Two: Meet Tay and A</span>
                                 </h4>
                                 <div className="et_pb_blurb_description">
                                   <p>
@@ -265,7 +259,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                               </div>
                               <div className="et_pb_blurb_container">
                                 <h4 className="et_pb_module_header">
-                                  <span>Schedule a Date!</span>
+                                  <span>Step Three: Schedule a Date!</span>
                                 </h4>
                                 <div className="et_pb_blurb_description">
                                   <p>
@@ -470,7 +464,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                               </div>
                               <div className="et_pb_blurb_container">
                                 <h4 className="et_pb_module_header">
-                                  <span>Trained</span>
+                                  <span>Trained / Insured</span>
                                 </h4>
                               </div>
                             </div>
@@ -624,7 +618,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                         <div className="et_pb_column et_pb_column_3_5 et_pb_column_17  et_pb_css_mix_blend_mode_passthrough et-last-child">
                           <div className="et_pb_module et_pb_text et_pb_text_11  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
-                              <h2>Winter Special</h2>
+                              <h2>Back To Work Special</h2>
                               <h3>1st Walk Free!</h3>
                               
                             </div>
