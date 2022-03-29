@@ -4,7 +4,7 @@ import axios from 'axios'
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 const useStyles = makeStyles((theme) => ({
- 
+ //https://www.elegantthemes.com/layouts/services/dog-walker-home-page/live-demo
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
@@ -110,45 +110,43 @@ axios.post('contactform/sendEmailContact/',contactform)
                 <div className="et-l et-l--post">
                   <div className="et_builder_inner_content et_pb_gutters3">
                     <div className="et_pb_section et_pb_section_0 et_pb_section_parallax et_pb_with_background et_section_regular">
-                      <div className="et_parallax_bg_wrap">
-                        {/* <div className="et_parallax_bg" style="background-image: url(https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-10-3.png);"></div> */}
-                      </div>
-                      <div className="et_pb_row et_pb_row_0">
-                        <div className="et_pb_column et_pb_column_3_5 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough">
-                          <div className="et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_light">
-                            <div className="et_pb_text_inner">
-                              <h1>Tailz N' TraiZ&#8217;s Stouffville <br></br>Dog Walking</h1>
-                              <p>Only the Best for Our Best Friends</p>
-                            </div>
-                          </div>{" "}
-                          <div className="et_pb_button_module_wrapper et_pb_button_0_wrapper  et_pb_module ">
-                            <a
-                              className="et_pb_button et_pb_custom_button_icon et_pb_button_0 et_pb_bg_layout_dark"
-                              href="#howitworks"
-                              data-icon="&#x1f43e;"
-                            >
-                              Learn How it Works 
-                            </a>
-                          </div>
-                        </div>{" "}
-                        <div className="et_pb_column et_pb_column_2_5 et_pb_column_1  et_pb_css_mix_blend_mode_passthrough et-last-child">
-                          <div className="et_pb_with_border et_pb_module et_pb_image et_pb_image_0">
-                            <span className="et_pb_image_wrap has-box-shadow-overlay">
-                              <div className="box-shadow-overlay"></div>
-                              <img
-                                src="images/dog-walker-18.jpg"
-                                alt=""
-                                title=""
-                                height="auto"
-                                width="auto"
-                                srcset="images/dog-walker-18.jpg 800w, images/dog-walker-18-254x254.jpg 254w, images/dog-walker-18-533x533.jpg 533w, images/dog-walker-18-400x400.jpg 400w, images/dog-walker-18-510x510.jpg 510w, images/dog-walker-18-100x100.jpg 100w"
-                                sizes="(max-width: 800px) 100vw, 800px"
-                                className="wp-image-226582"
-                              />
-                            </span>
+                    <span className="et_parallax_bg_wrap"><span className="et_parallax_bg" style={{backgroundImage: 'url(https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-10-3.png)'}} /></span>
+                    <div className="et_pb_row et_pb_row_0">
+                      <div className="et_pb_column et_pb_column_3_5 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough">
+                        <div className="et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_light">
+                          <div className="et_pb_text_inner">
+                            <h1>Tails and Trails Stouffville <br></br>Dog Walking</h1>
+                            <p>Only the Best for Our Best Friends</p>
                           </div>
                         </div>
+                        <div className="et_pb_button_module_wrapper et_pb_button_0_wrapper  et_pb_module ">
+                          <a className="et_pb_button et_pb_button_0 et_pb_bg_layout_dark" href data-icon="$">Learn How it Works</a>
+                        </div>
                       </div>
+                      <div className="et_pb_column et_pb_column_2_5 et_pb_column_1  et_pb_css_mix_blend_mode_passthrough et-last-child">
+                        <div className="et_pb_with_border et_pb_module et_pb_image et_pb_image_0">
+                          <span className="et_pb_image_wrap has-box-shadow-overlay"><div className="box-shadow-overlay" /><img width={800} height={800} src="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-42.jpg" alt="" title srcSet="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-42.jpg 800w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-42-254x254.jpg 254w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-42-533x533.jpg 533w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-42-400x400.jpg 400w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-42-510x510.jpg 510w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-42-100x100.jpg 100w" sizes="(max-width: 800px) 100vw, 800px" className="wp-image-226568" /></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="et_pb_row et_pb_row_1">
+                      <div className="et_pb_column et_pb_column_1_3 et_pb_column_2  et_pb_css_mix_blend_mode_passthrough et_pb_column_empty">
+                      </div>
+                      <div className="et_pb_column et_pb_column_1_3 et_pb_column_3  et_pb_css_mix_blend_mode_passthrough">
+                        <div className="et_pb_module et_pb_image et_pb_image_1">
+                          <span className="et_pb_image_wrap has-box-shadow-overlay"><div className="box-shadow-overlay" />
+                          <img loading="lazy" width={400} height={400} src="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28.jpg" alt="" title srcSet="https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28.jpg 400w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28-254x254.jpg 254w, https://www.elegantthemes.com/layouts/wp-content/uploads/2019/08/dog-walker-28-100x100.jpg 100w" sizes="(max-width: 400px) 100vw, 400px" className="wp-image-226569" /></span>
+                        </div>
+                      </div>
+                      <div className="et_pb_column et_pb_column_1_3 et_pb_column_4  et_pb_css_mix_blend_mode_passthrough et-last-child">
+                        <ul className="et_pb_module et_pb_social_media_follow et_pb_social_media_follow_0 clearfix  et_pb_text_align_right et_pb_bg_layout_light">
+                          <li className="et_pb_social_media_follow_network_0 et_pb_social_icon et_pb_social_network_link  et-social-facebook"><a href="#" className="icon et_pb_with_border" title="Follow on Facebook" target="_blank"><span className="et_pb_social_media_follow_network_name" aria-hidden="true">Follow</span></a></li>
+                          <li className="et_pb_social_media_follow_network_1 et_pb_social_icon et_pb_social_network_link  et-social-twitter"><a href="#" className="icon et_pb_with_border" title="Follow on Twitter" target="_blank"><span className="et_pb_social_media_follow_network_name" aria-hidden="true">Follow</span></a></li>
+                          <li className="et_pb_social_media_follow_network_2 et_pb_social_icon et_pb_social_network_link  et-social-instagram"><a href="#" className="icon et_pb_with_border" title="Follow on Instagram" target="_blank"><span className="et_pb_social_media_follow_network_name" aria-hidden="true">Follow</span></a></li>
+                          <li className="et_pb_social_media_follow_network_3 et_pb_social_icon et_pb_social_network_link  et-social-youtube"><a href="#" className="icon et_pb_with_border" title="Follow on Youtube" target="_blank"><span className="et_pb_social_media_follow_network_name" aria-hidden="true">Follow</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
                     </div>{" "}
                     <div className="et_pb_section et_pb_section_1 et_pb_with_background et_section_regular">
                       <div className="et_pb_row et_pb_row_2">
@@ -709,7 +707,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                       </div>{" "}
                       <div className="et_pb_row et_pb_row_11">
                         <div className="et_pb_column et_pb_column_3_5 et_pb_column_23  et_pb_css_mix_blend_mode_passthrough">
-                          <div className="et_pb_module et_pb_image et_pb_image_11 et_animated et-waypoint">
+                          <div className="et_pb_module et_pb_image et_pb_image_11">
                             <span className="et_pb_image_wrap has-box-shadow-overlay">
                               <div className="box-shadow-overlay"></div>
                               <img

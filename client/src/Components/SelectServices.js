@@ -40,6 +40,7 @@ export default function SelectServices(props) {
           onChange={handleChange}
         >
           <MenuItem value={'Walk'}>30 Minute Walk + Cool Down Time</MenuItem>
+          <MenuItem value={'40MinuteWalk'}>45 Minute Walk + Cool Down Time</MenuItem>
           <MenuItem value={'Park'}>Half Hour at The Park!</MenuItem>
           
         </Select>
