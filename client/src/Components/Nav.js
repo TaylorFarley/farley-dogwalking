@@ -3,7 +3,7 @@ import {Link } from 'react-router-dom';
 import $ from "jquery";
 import axios from 'axios'
 import UserContext from "../context/UserContext";
-
+import { HashLink as LinkNew } from 'react-router-hash-link';
 const Nav = () => {
   const { userData, setUserData } = useContext(UserContext);
 
@@ -27,14 +27,14 @@ const Nav = () => {
                 id="menu-item-226590"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226590"
               >
-                  <Link to="/">Home</Link>
+                  <LinkNew to="/#et-main-area">Home</LinkNew>
                 
               </li>
               <li
                 id="menu-item-226592"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226592"
               >
-                <Link to="/#services">Services N' Rates</Link> 
+                <LinkNew to="/#services">Services &amp; Rates</LinkNew> 
               </li>
               <li
                 id="menu-item-226594"
@@ -49,7 +49,7 @@ const Nav = () => {
                 id="menu-item-226598"
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226598"
               >
-                  <Link to="/#contact">Contact Us</Link> 
+                  <LinkNew to="/#contact">Contact Us</LinkNew> 
               </li>
 
               {userData.email?(<li

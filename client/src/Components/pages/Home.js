@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import axios from 'axios'
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import { HashLink as Link } from 'react-router-hash-link';
 const useStyles = makeStyles((theme) => ({
  //https://www.elegantthemes.com/layouts/services/dog-walker-home-page/live-demo
   form: {
@@ -315,19 +316,31 @@ axios.post('contactform/sendEmailContact/',contactform)
                             <div className="et_pb_text_inner">
                               <h3>Dog Walking</h3>
                               <p>
-                                30 minute walk - Around your neighbourhood or a
+                                30 or 45 minute walk - Around your neighbourhood or a
                                 nearby park. Additional dog add $5.00. Available
-                                7 days a week.
+                                7 days a week. We also offer puppy check in and bathroom breaks.
                               </p>
                             </div>
                           </div>{" "}
                           <div className="et_pb_module et_pb_text et_pb_text_5  et_pb_text_align_left et_pb_bg_layout_light">
                             <div className="et_pb_text_inner">
+                            <p>
+                                <strong style={{ fontSize: "25px" }}>
+                                  $30
+                                </strong>
+                                /45min/walk/dog
+                              </p>
                               <p>
                                 <strong style={{ fontSize: "25px" }}>
                                   $25
                                 </strong>
-                                /walk/dog
+                                /30min/walk/dog
+                              </p>
+                              <p>
+                                <strong style={{ fontSize: "25px" }}>
+                                  $15
+                                </strong>
+                                /check-in and bathroom break/10-15mins
                               </p>
                             </div>
                           </div>{" "}
@@ -362,7 +375,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                               <h3>Dog Park Day</h3>
                               <p>
                                 Let's goto the park! A trip to the park for
-                                30-40 minutes with friends! Price includes pick
+                                30 minutes with friends! Price includes pick
                                 up drop off and a cool down period before we
                                 leave.
                               </p>
@@ -372,10 +385,11 @@ axios.post('contactform/sendEmailContact/',contactform)
                             <div className="et_pb_text_inner">
                               <p>
                                 <strong style={{ fontSize: "30px" }}>
-                                  $32
+                                  $55
                                 </strong>
                                 /day/dog
                               </p>
+                              
                             </div>
                           </div>{" "}
                           <div className="et_pb_button_module_wrapper et_pb_button_6_wrapper et_pb_button_alignment_tablet_center et_pb_module ">
@@ -420,7 +434,13 @@ axios.post('contactform/sendEmailContact/',contactform)
                                 <strong style={{ fontSize: "30px" }}>
                                   $200
                                 </strong>
-                                /day/dog
+                                /day(24 hours)/dog
+                              </p>
+                              <p>
+                                <strong style={{ fontSize: "30px" }}>
+                                  $125
+                                </strong>
+                                /day(8 hours)/dog
                               </p>
                             </div>
                           </div>{" "}
