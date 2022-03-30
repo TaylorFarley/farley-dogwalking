@@ -12,8 +12,8 @@ router.post('/sendEmailContact', async (req, res) => {
    to: 'hi@twfmade.ca', // Change to your recipient
    from: 'hi@twfmade.ca', // Change to your verified sender
    subject: 'email from contact form dogwalking',
-   text: `email from ${req.body.email} wanted to know ${req.body.message}`,
-   html: `email from ${req.body.email} wanted to know ${req.body.message}`,
+   text: `email from ${req.body.name} at ${req.body.email} wanted to know ${req.body.message}`,
+   html: `email from ${req.body.name} at ${req.body.email} wanted to know ${req.body.message}`,
  }
  sgMail
    .send(msg)

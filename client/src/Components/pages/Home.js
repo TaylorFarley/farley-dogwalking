@@ -21,6 +21,7 @@ const Home = () => {
   const [response, setResponse] = useState(null);
   const SITE_KEY = "6LchJioaAAAAADlyrXnpBEQZckXkhjS4kGz6rkuC";
   const [contactform, setcontactform] = useState({
+    name: undefined,
     email: undefined,
     phone: undefined,
     message: undefined
@@ -716,6 +717,20 @@ axios.post('contactform/sendEmailContact/',contactform)
                               <h3 id="contact">Get in Touch By Phone Or Email</h3>
                               <p>
                       <form className={classes.form} noValidate>
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="name"
+                        label="Name"
+                        name="name"
+                        autoComplete="name"     
+                        onChange={changeHandler}     
+                        onClick = {()=>{setsent(false)}}             
+                       
+                      />      
+                      
                       <TextField
                         variant="outlined"
                         margin="normal"
