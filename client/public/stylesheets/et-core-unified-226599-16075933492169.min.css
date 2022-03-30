@@ -2292,7 +2292,7 @@ body.et_pb_pagebuilder_layout.single.et_full_width_page #page-container #et-boc 
 		margin-right: auto
 	}
 	.et_pb_column_3 {
-		transform: scaleX(0.69) scaleY(0.69) translateX(0px) translateY(-140px) rotateX(0deg) rotateY(0deg) rotateZ(45deg)
+		transform: scaleX(0.69) scaleY(0.69) translateX(0px) translateY(-140px) rotateX(0deg) rotateY(0deg) rotateZ(5deg)
 	}
 	.et_pb_column_13 {
 		transform: translateX(0px) translateY(0px)

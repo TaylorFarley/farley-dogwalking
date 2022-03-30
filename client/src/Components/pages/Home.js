@@ -188,7 +188,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                               </div>
                               <div className="et_pb_blurb_container">
                                 <h4 className="et_pb_module_header">
-                                  <span>Step One: ContacT</span>
+                                  <span>Step One: ContacT Us</span>
                                 </h4>
                                 <div className="et_pb_blurb_description">
                                   <p>
@@ -480,7 +480,7 @@ axios.post('contactform/sendEmailContact/',contactform)
                               </div>
                               <div className="et_pb_blurb_container">
                                 <h4 className="et_pb_module_header">
-                                  <span>Certified</span>
+                                  <span>Local</span>
                                 </h4>
                               </div>
                             </div>

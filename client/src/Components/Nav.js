@@ -14,7 +14,8 @@ const Nav = () => {
       <div class="container clearfix et_menu_container">
         <div class="title_container">
           <h1>
-          <Link to="/">Dog Walking</Link>
+            <img src="images/logo.webp" style={{width:"125px", height:"50px"}}></img>
+       
             {" "}
             
           </h1>
