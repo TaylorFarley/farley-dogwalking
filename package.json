@@ -10,9 +10,9 @@
     "server": "nodemon ./bin/www",
     "client": "cd client && npm start",
     "dev": "env-cmd -f ./config/dev.env concurrently \"npm run server\" \"npm run client\"",
-    "build": "cd client && npm run build",
+    "builds": "cd client && npm run build",
     "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build"
+    "heroku-postbuild": "npm run install-client && npm run builds"
   },
   "dependencies": {
     "@material-ui/lab": "^4.0.0-alpha.56",
