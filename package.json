@@ -36,8 +36,7 @@
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
-    "path": "^0.12.7",
-    "react-google-button": "^0.7.1",
+    "path": "^0.12.7",    
     "stripe": "^8.129.0",
     "uuid": "3.3.2",
     "validator": "^13.1.17"
