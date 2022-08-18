@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import GoogleButton from "react-google-button";
+
 import Calendar from "../Calendar";
 import SelectServices from "../SelectServices";
 import axios from "axios";
@@ -528,9 +528,7 @@ const BookAppointment = () => {
                                         <div class="separator">Or</div>
                                         <div>
                                           <a href="https://farley-dogwalking.herokuapp.com/auth/google">
-                                            <GoogleButton
-                                              style={{ width: "100%" }}
-                                            />
+                                      
                                           </a>
                                         </div>
                                       </form>
