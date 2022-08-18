@@ -2,6 +2,9 @@
   "name": "farley-scheduler",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "14.17.3"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "server": "nodemon ./bin/www",
